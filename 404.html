@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Page Not Found | SAPwithSAI</title>
+
+    <meta
+        name="description"
+        content="The page you are looking for could not be found. Explore SAPwithSAI for SAP SuccessFactors Employee Central, SAP CPI and interview preparation resources."
+    >
+
+    <meta
+        name="robots"
+        content="noindex, follow"
+    >
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <nav class="navbar">
+
+        <div class="logo">
+            SAPwith<span>SAI</span>
+        </div>
+
+
+        <button
+            class="menu-toggle"
+            id="menu-toggle"
+            aria-label="Open navigation">
+            ☰
+        </button>
+
+
+        <div class="nav-links">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="blog.html">
+                Blog
+            </a>
+
+            <a href="employee-central.html">
+                Employee Central
+            </a>
+
+            <a href="cpi.html">
+                SAP CPI
+            </a>
+
+            <a href="interview-prep.html">
+                Interview Prep
+            </a>
+
+            <a href="about.html">
+                About
+            </a>
+
+        </div>
+
+    </nav>
+
+</header>
+
+
+<main>
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <p class="tagline">
+                SAPwithSAI
+            </p>
+
+            <h1>
+                404
+                <br>
+                <span>Page Not Found.</span>
+            </h1>
+
+            <p class="hero-text">
+
+                The page you're looking for doesn't exist
+                or may have been moved.
+
+            </p>
+
+            <p class="hero-subtext">
+
+                Don't worry — you can continue exploring
+                SAP learning resources.
+
+            </p>
+
+
+            <div class="hero-buttons">
+
+                <a
+                    href="index.html"
+                    class="button primary">
+                    ← Back to Home
+                </a>
+
+
+                <a
+                    href="blog.html"
+                    class="button secondary">
+                    Explore Articles
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <div class="footer-content">
+
+        <div>
+
+            <div class="logo">
+                SAPwith<span>SAI</span>
+            </div>
+
+            <p>
+                Learn SAP. Build your expertise.
+            </p>
+
+        </div>
+
+
+        <div>
+
+            <p>
+                © 2026 SAPwithSAI. All rights reserved.
+            </p>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<script>
+
+    const menuToggle =
+        document.getElementById("menu-toggle");
+
+    const navLinks =
+        document.querySelector(".nav-links");
+
+
+    if (menuToggle && navLinks) {
+
+        menuToggle.addEventListener("click", function () {
+
+            navLinks.classList.toggle("active");
+
+        });
+
+
+        navLinks.querySelectorAll("a").forEach(link => {
+
+            link.addEventListener("click", function () {
+
+                navLinks.classList.remove("active");
+
+            });
+
+        });
+
+    }
+
+</script>
+
+
+</body>
+
+</html>

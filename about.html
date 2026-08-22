@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>About SAPwithSAI</title>
+
+    <meta name="description"
+          content="Learn more about SAPwithSAI and its mission to simplify SAP SuccessFactors Employee Central and SAP CPI learning.">
+
+    <link rel="stylesheet" href="style.css">
+
+    
+</head>
+
+
+<body>
+
+
+<header>
+
+    <nav class="navbar">
+
+    <div class="logo">
+        SAPwith<span>SAI</span>
+    </div>
+
+    <button
+        class="menu-toggle"
+        id="menu-toggle"
+        aria-label="Open navigation">
+        ☰
+    </button>
+
+    <div class="nav-links">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="blog.html">
+                Blog
+            </a>
+
+            <a href="employee-central.html">
+                Employee Central
+            </a>
+
+            <a href="cpi.html">
+                SAP CPI
+            </a>
+
+            <a href="interview-prep.html">
+                Interview Prep
+            </a>
+
+            <a href="about.html">
+                About
+            </a>
+
+        </div>
+
+    </nav>
+
+</header>
+
+
+
+<main>
+
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <p class="tagline">
+            ABOUT SAPwithSAI
+        </p>
+
+        <h1>
+            Learn SAP.
+            <span>Build Your Expertise.</span>
+        </h1>
+
+        <p class="hero-text">
+
+            SAPwithSAI is a learning platform focused on
+            SAP SuccessFactors Employee Central and
+            SAP Cloud Integration.
+
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<section class="categories">
+
+
+    <div class="section-heading">
+
+        <p>
+            OUR MISSION
+        </p>
+
+        <h2>
+            Making SAP Learning Practical
+        </h2>
+
+    </div>
+
+
+    <div class="category-grid">
+
+
+        <div class="category-card">
+
+            <h3>
+                Practical Learning
+            </h3>
+
+            <p>
+
+                Learn SAP concepts through practical
+                examples, configuration guides and
+                real-world implementation scenarios.
+
+            </p>
+
+        </div>
+
+
+        <div class="category-card">
+
+            <h3>
+                Employee Central
+            </h3>
+
+            <p>
+
+                Explore SAP SuccessFactors Employee
+                Central from fundamentals to advanced
+                configuration topics.
+
+            </p>
+
+        </div>
+
+
+        <div class="category-card">
+
+            <h3>
+                SAP CPI
+            </h3>
+
+            <p>
+
+                Follow the SAP CPI learning journey from
+                fundamentals to enterprise integration
+                scenarios.
+
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<section class="articles">
+
+    <div class="section-heading">
+
+        <p>
+            ABOUT SAPwithSAI
+        </p>
+
+        <h2>
+            Built by a Consultant, for Consultants
+        </h2>
+
+    </div>
+
+
+    <div class="about-content">
+
+        <p>
+            SAPwithSAI is a free learning hub built by a practising
+            SAP SuccessFactors Employee Central consultant with
+            2.6 years of hands-on implementation and AMS project
+            experience.
+        </p>
+
+        <p>
+            Everything here is based on real project scenarios -
+            not just documentation.
+        </p>
+
+        <p>
+            Whether you're just starting out or preparing for your
+            next interview, this site is for you.
+        </p>
+
+    </div>
+
+</section>
+
+
+</main>
+
+
+
+<footer>
+
+    <div class="footer-content">
+
+        <div>
+
+            <div class="logo">
+                SAPwith<span>SAI</span>
+            </div>
+
+            <p>
+                Learn SAP. Build your expertise.
+            </p>
+
+        </div>
+
+
+        <div>
+
+            <p>
+                © 2026 SAPwithSAI. All rights reserved.
+            </p>
+
+        </div>
+
+    </div>
+
+</footer>
+
+<script src="js/articles.js"></script>
+
+<script>
+
+    const menuToggle =
+        document.getElementById("menu-toggle");
+
+    const navLinks =
+        document.querySelector(".nav-links");
+
+
+    if (menuToggle && navLinks) {
+
+        menuToggle.addEventListener("click", function () {
+
+            navLinks.classList.toggle("active");
+
+        });
+
+
+        navLinks.querySelectorAll("a").forEach(link => {
+
+            link.addEventListener("click", function () {
+
+                navLinks.classList.remove("active");
+
+            });
+
+        });
+
+    }
+
+</script>
+
+</body>
+
+</html>

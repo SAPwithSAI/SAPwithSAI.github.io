@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SAP Interview Preparation | SAPwithSAI</title>
+
+    <meta name="description"
+          content="SAP SuccessFactors Employee Central and SAP CPI interview preparation with practical questions and real-world scenarios.">
+
+    <link rel="stylesheet" href="style.css">
+
+    
+</head>
+
+<body>
+
+<header>
+
+    <nav class="navbar">
+
+    <div class="logo">
+        SAPwith<span>SAI</span>
+    </div>
+
+    <button
+        class="menu-toggle"
+        id="menu-toggle"
+        aria-label="Open navigation">
+        ☰
+    </button>
+
+    <div class="nav-links">
+
+            <a href="index.html">Home</a>
+
+            <a href="blog.html">
+                Blog
+            </a>
+
+            <a href="employee-central.html">
+                Employee Central
+            </a>
+
+            <a href="cpi.html">
+                SAP CPI
+            </a>
+
+            <a href="interview-prep.html">
+                Interview Prep
+            </a>
+
+            <a href="about.html">
+                About
+            </a>
+
+        </div>
+
+    </nav>
+
+</header>
+
+
+<main>
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <p class="tagline">
+                SAP CAREER
+            </p>
+
+            <h1>
+                SAP Interview
+                <span>Preparation</span>
+            </h1>
+
+            <p class="hero-text">
+
+                Prepare for SAP SuccessFactors and SAP CPI
+                interviews with practical questions,
+                configuration scenarios and real-world
+                implementation discussions.
+
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <section class="categories">
+
+        <div class="section-heading">
+
+            <p>
+                INTERVIEW PREPARATION
+            </p>
+
+            <h2>
+                Choose Your Path
+            </h2>
+
+        </div>
+
+
+        <div class="category-grid">
+
+            <div class="category-card">
+
+                <h3>
+                    Employee Central
+                </h3>
+
+                <p>
+                    Prepare for SAP SuccessFactors Employee
+                    Central interviews covering configuration,
+                    business rules, workflows, MDF and more.
+                </p>
+
+                <a href="#">
+                    EC Interview Questions →
+                </a>
+
+            </div>
+
+
+            <div class="category-card">
+
+                <h3>
+                    SAP CPI
+                </h3>
+
+                <p>
+                    Prepare for SAP CPI interviews covering
+                    iFlows, adapters, mappings, Groovy,
+                    APIs and troubleshooting.
+                </p>
+
+                <a href="#">
+                    CPI Interview Questions →
+                </a>
+
+            </div>
+
+
+            <div class="category-card">
+
+                <h3>
+                    Real-World Scenarios
+                </h3>
+
+                <p>
+                    Practice scenario-based questions that
+                    are commonly discussed during SAP
+                    implementation and AMS interviews.
+                </p>
+
+                <a href="#">
+                    Explore Scenarios →
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="articles">
+
+        <div class="section-heading">
+
+            <p>
+                POPULAR
+            </p>
+
+            <h2>
+                Interview Topics
+            </h2>
+
+        </div>
+
+
+        <div class="article-grid">
+
+            <article class="article-card">
+
+                <div class="article-category">
+                    EMPLOYEE CENTRAL
+                </div>
+
+                <h3>
+                    SAP SuccessFactors EC Interview Questions
+                </h3>
+
+                <p>
+                    Important Employee Central questions
+                    covering core configuration and
+                    implementation concepts.
+                </p>
+
+                <a href="#">
+                    Start Preparing →
+                </a>
+
+            </article>
+
+
+            <article class="article-card">
+
+                <div class="article-category">
+                    SAP CPI
+                </div>
+
+                <h3>
+                    SAP CPI Interview Questions
+                </h3>
+
+                <p>
+                    Questions covering iFlows, adapters,
+                    mappings, Groovy and integration
+                    scenarios.
+                </p>
+
+                <a href="#">
+                    Start Preparing →
+                </a>
+
+            </article>
+
+
+            <article class="article-card">
+
+                <div class="article-category">
+                    SCENARIO BASED
+                </div>
+
+                <h3>
+                    Real Project Scenarios
+                </h3>
+
+                <p>
+                    Test your knowledge with practical
+                    scenarios based on real SAP projects.
+                </p>
+
+                <a href="#">
+                    Practice →
+                </a>
+
+            </article>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <div class="footer-content">
+
+        <div>
+
+            <div class="logo">
+                SAPwith<span>SAI</span>
+            </div>
+
+            <p>
+                Learn SAP. Build your expertise.
+            </p>
+
+        </div>
+
+        <div>
+
+            <p>
+                © 2026 SAPwithSAI. All rights reserved.
+            </p>
+
+        </div>
+
+    </div>
+
+</footer>
+
+<script src="js/articles.js"></script>
+
+<script>
+
+    const menuToggle =
+        document.getElementById("menu-toggle");
+
+    const navLinks =
+        document.querySelector(".nav-links");
+
+
+    if (menuToggle && navLinks) {
+
+        menuToggle.addEventListener("click", function () {
+
+            navLinks.classList.toggle("active");
+
+        });
+
+
+        navLinks.querySelectorAll("a").forEach(link => {
+
+            link.addEventListener("click", function () {
+
+                navLinks.classList.remove("active");
+
+            });
+
+        });
+
+    }
+
+</script>
+
+</body>
+</html>

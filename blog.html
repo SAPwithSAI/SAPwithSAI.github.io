@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <!-- Primary SEO -->
+    <title>SAP Blog | SAP SuccessFactors & SAP CPI | SAPwithSAI</title>
+
+    <meta
+        name="description"
+        content="Explore practical SAP SuccessFactors Employee Central and SAP CPI articles, tutorials, configuration concepts, real-world scenarios, and interview preparation from SAPwithSAI."
+    >
+
+    <meta
+        name="keywords"
+        content="SAP blog, SAP SuccessFactors blog, Employee Central tutorials, SAP CPI tutorials, SAP EC, SAP interview preparation"
+    >
+
+    <meta
+        name="author"
+        content="SAPwithSAI"
+    >
+
+    <!-- Search Engine Crawling -->
+    <meta
+        name="robots"
+        content="index, follow"
+    >
+
+    <!-- Open Graph / Social Sharing -->
+    <meta
+        property="og:title"
+        content="SAP Blog | SAP SuccessFactors & SAP CPI | SAPwithSAI"
+    >
+
+    <meta
+        property="og:description"
+        content="Explore practical SAP SuccessFactors Employee Central and SAP CPI articles, tutorials, real-world scenarios, and interview preparation from SAPwithSAI."
+    >
+
+    <meta
+        property="og:type"
+        content="website"
+    >
+
+    <meta
+        property="og:site_name"
+        content="SAPwithSAI"
+    >
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <nav class="navbar">
+
+    <div class="logo">
+        SAPwith<span>SAI</span>
+    </div>
+
+    <button
+        class="menu-toggle"
+        id="menu-toggle"
+        aria-label="Open navigation">
+        ☰
+    </button>
+
+    <div class="nav-links">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="blog.html">
+                Blog
+            </a>
+
+            <a href="employee-central.html">
+                Employee Central
+            </a>
+
+            <a href="cpi.html">
+                SAP CPI
+            </a>
+
+            <a href="interview-prep.html">
+                Interview Prep
+            </a>
+
+            <a href="about.html">
+                About
+            </a>
+
+        </div>
+
+    </nav>
+
+</header>
+
+
+
+<main>
+
+
+    <!-- Blog Hero -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <p class="tagline">
+                SAPwithSAI BLOG
+            </p>
+
+            <h1>
+                Learn SAP.
+                <span>One Article at a Time.</span>
+            </h1>
+
+            <p class="hero-text">
+
+                Practical articles, tutorials and real-world
+                scenarios covering SAP SuccessFactors Employee
+                Central and SAP Cloud Integration.
+
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- Blog Controls -->
+
+    <section class="blog-section">
+
+
+        <div class="blog-controls">
+
+
+            <div class="search-box">
+
+                <input
+                    type="text"
+                    id="article-search"
+                    placeholder="Search SAP articles..."
+                    aria-label="Search articles">
+
+            </div>
+
+
+            <div class="category-filters">
+
+                <button
+                    class="filter-button active"
+                    data-category="All">
+
+                    All
+
+                </button>
+
+
+                <button
+                    class="filter-button"
+                    data-category="Employee Central">
+
+                    Employee Central
+
+                </button>
+
+
+                <button
+                    class="filter-button"
+                    data-category="SAP CPI">
+
+                    SAP CPI
+
+                </button>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- Article Count -->
+
+        <div class="blog-results">
+
+            <p id="article-count">
+                Articles
+            </p>
+
+        </div>
+
+
+
+        <!-- Article Grid -->
+
+        <div
+            class="article-grid"
+            id="blog-articles">
+
+        </div>
+
+
+
+        <!-- No Results -->
+
+        <div
+            class="no-results"
+            id="no-results">
+
+            <h3>
+                No articles found
+            </h3>
+
+            <p>
+                Try a different search term or category.
+            </p>
+
+        </div>
+
+
+    </section>
+
+
+</main>
+
+
+
+<footer>
+
+    <div class="footer-content">
+
+
+        <div>
+
+            <div class="logo">
+                SAPwith<span>SAI</span>
+            </div>
+
+            <p>
+                Learn SAP. Build your expertise.
+            </p>
+
+        </div>
+
+
+        <div>
+
+            <p>
+                © 2026 SAPwithSAI. All rights reserved.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</footer>
+
+
+
+<script src="js/articles.js"></script>
+
+<script>
+
+    const menuToggle =
+        document.getElementById("menu-toggle");
+
+    const navLinks =
+        document.querySelector(".nav-links");
+
+
+    if (menuToggle && navLinks) {
+
+        menuToggle.addEventListener("click", function () {
+
+            navLinks.classList.toggle("active");
+
+        });
+
+
+        navLinks.querySelectorAll("a").forEach(link => {
+
+            link.addEventListener("click", function () {
+
+                navLinks.classList.remove("active");
+
+            });
+
+        });
+
+    }
+
+</script>
+
+</body>
+
+</html>
