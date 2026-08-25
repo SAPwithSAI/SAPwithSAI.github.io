@@ -1,5 +1,6 @@
 const articles = [
 
+
     {
         title: "Concurrent Employment in SAP SuccessFactors Employee Central",
 
@@ -35,6 +36,24 @@ const articles = [
         readTime: "8 min read",
 
         featured: false
+    },
+
+    {
+    title: "What Is SAP and What Is SAP SuccessFactors? A Complete Beginner's Guide",
+
+    description:
+        "Learn what SAP and SAP SuccessFactors are, how they support businesses and HR, and explore the basics of SAP SuccessFactors for beginners.",
+
+    category: "Employee Central",
+
+    date: "August 2026",
+
+    readTime: "10 min read",
+
+    featured: false,
+
+    url:
+    "articles/employee-central/what-is-sap-and-successfactors.html"
     }
 
 ];
