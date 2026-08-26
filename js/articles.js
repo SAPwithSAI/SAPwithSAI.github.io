@@ -54,7 +54,25 @@ const articles = [
 
     url:
     "articles/employee-central/what-is-sap-and-successfactors.html"
-    }
+    },
+
+    {
+    title: "What Is SAP SuccessFactors Employee Central? A Complete Beginner's Guide",
+
+    description:
+        "Learn what SAP SuccessFactors Employee Central is, why it is called Core HR, and understand the key concepts every beginner should know.",
+
+    category: "Employee Central",
+
+    date: "August 2026",
+
+    readTime: "12 min read",
+
+    featured: false,
+
+    url:
+        "articles/employee-central/what-is-sap-successfactors-employee-central.html"
+}
 
 ];
 
