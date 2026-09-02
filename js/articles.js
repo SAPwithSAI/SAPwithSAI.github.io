@@ -460,5 +460,62 @@ function displayFeaturedArticle() {
 
 }
 
+/* ========================================
+   SAPwithSAI SUBSCRIBE FORM
+======================================== */
+
+const openSubscribe = document.getElementById("openSubscribe");
+const closeSubscribe = document.getElementById("closeSubscribe");
+const subscribeModal = document.getElementById("subscribeModal");
+const subscribeForm = document.getElementById("subscribeForm");
+const subscribeFormContent = document.getElementById("subscribeFormContent");
+const subscribeSuccess = document.getElementById("subscribeSuccess");
+
+
+/* Open Subscribe Modal */
+if (openSubscribe && subscribeModal) {
+    openSubscribe.addEventListener("click", function () {
+        subscribeModal.classList.add("active");
+    });
+}
+
+
+/* Close Subscribe Modal */
+if (closeSubscribe && subscribeModal) {
+    closeSubscribe.addEventListener("click", function () {
+        subscribeModal.classList.remove("active");
+    });
+}
+
+
+/* Close when clicking outside the popup */
+if (subscribeModal) {
+    subscribeModal.addEventListener("click", function (event) {
+        if (event.target === subscribeModal) {
+            subscribeModal.classList.remove("active");
+        }
+    });
+}
+
+
+/* Close with Escape key */
+document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape" && subscribeModal) {
+        subscribeModal.classList.remove("active");
+    }
+});
+
+
+/* Submit Subscription Form */
+if (subscribeForm) {
+    subscribeForm.addEventListener("submit", function (event) {
+
+        event.preventDefault();
+
+        subscribeFormContent.style.display = "none";
+        subscribeSuccess.style.display = "block";
+
+    });
+}
 
 displayFeaturedArticle();

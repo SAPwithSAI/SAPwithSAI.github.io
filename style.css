@@ -64,9 +64,36 @@ header {
     padding: 110px 30px 100px;
 }
 
+
+/* 
+   Desktop Hero Layout
+   Left side = existing hero content
+   Right side = SAPwithSAI image + subscribe card
+*/
+
 .hero-content {
-    max-width: 780px;
+    max-width: 1200px;
+    margin: auto;
+
+    display: grid;
+    grid-template-columns: 1fr 0.85fr;
+    gap: 70px;
+
+    align-items: center;
 }
+
+
+
+
+/* New right-side section */
+
+.hero-visual {
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+    justify-self: center;
+}
+
 
 .tagline {
     color: #0070f3;
@@ -275,7 +302,10 @@ footer {
         gap: 25px;
         text-align: center;
     }
+
 }
+
+
 /* About Page */
 
 .about-content {
@@ -288,6 +318,8 @@ footer {
     margin-bottom: 20px;
     line-height: 1.8;
 }
+
+
 /* ============================= */
 /* Blog Article */
 /* ============================= */
@@ -468,6 +500,8 @@ footer {
     }
 
 }
+
+
 /* ============================= */
 /* Reading Progress */
 /* ============================= */
@@ -523,6 +557,8 @@ footer {
 html {
     scroll-behavior: smooth;
 }
+
+
 /* ============================= */
 /* Blog Hub */
 /* ============================= */
@@ -535,12 +571,6 @@ html {
 
 
 /* Blog Controls */
-
-.blog-section {
-    max-width: 1200px;
-    margin: auto;
-    padding: 70px 30px 100px;
-}
 
 .blog-controls {
     display: flex;
@@ -618,6 +648,7 @@ html {
 
 }
 
+
 /* ============================= */
 /* Mobile Navigation */
 /* ============================= */
@@ -681,6 +712,8 @@ html {
     }
 
 }
+
+
 /* ============================= */
 /* Hero Enhancement */
 /* ============================= */
@@ -691,6 +724,8 @@ html {
     margin-top: -18px;
     margin-bottom: 30px;
 }
+
+
 /* ============================= */
 /* Category Card Enhancement */
 /* ============================= */
@@ -711,6 +746,8 @@ html {
     transform: translateY(-4px);
     box-shadow: 0 10px 30px rgba(23, 32, 51, 0.08);
 }
+
+
 /* ============================= */
 /* Latest Article Enhancement */
 /* ============================= */
@@ -733,6 +770,8 @@ html {
     font-size: 13px;
     margin-bottom: 20px;
 }
+
+
 /* ============================= */
 /* Featured Article */
 /* ============================= */
@@ -796,7 +835,7 @@ html {
 }
 
 
-/* Mobile */
+/* Featured Mobile */
 
 @media (max-width: 800px) {
 
@@ -812,4 +851,454 @@ html {
         font-size: 28px;
     }
 
+}
+
+
+/* ========================================
+   HOMEPAGE SUBSCRIBE SECTION
+======================================== */
+
+
+/* Right-side SAPwithSAI image */
+
+.hero-community-image {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    display: block;
+    margin: 0 auto 25px;
+}
+
+
+/* Subscribe Card */
+
+.subscribe-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 25px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.subscribe-card h3 {
+    margin-bottom: 10px;
+    font-size: 1.4rem;
+}
+
+.subscribe-card p {
+    margin-bottom: 18px;
+    line-height: 1.6;
+}
+
+.subscribe-btn {
+    background: #2563eb;
+    color: #ffffff;
+    border: none;
+    padding: 14px 25px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.subscribe-btn:hover {
+    transform: translateY(-2px);
+}
+
+
+/* ========================================
+   SUBSCRIBE MODAL
+======================================== */
+
+.subscribe-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.65);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.subscribe-modal.active {
+    display: flex;
+}
+
+.subscribe-modal-content {
+    position: relative;
+    background: #ffffff;
+    width: 100%;
+    max-width: 480px;
+    padding: 40px;
+    border-radius: 18px;
+    text-align: center;
+}
+
+.subscribe-modal-content h2 {
+    margin-bottom: 12px;
+}
+
+.subscribe-modal-content p {
+    margin-bottom: 25px;
+    line-height: 1.6;
+}
+
+.close-subscribe {
+    position: absolute;
+    top: 12px;
+    right: 18px;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+#subscribeForm {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#subscribeForm input {
+    padding: 14px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+#subscribeForm button {
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    background: #2563eb;
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.success-icon {
+    width: 65px;
+    height: 65px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    background: #2563eb;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+}
+
+
+/* ========================================
+   SUBSCRIBE MOBILE
+======================================== */
+
+@media (max-width: 800px) {
+
+    .hero-content {
+    grid-template-columns: 1fr;
+    gap: 50px;
+}
+
+.hero-visual {
+    width: 100%;
+    max-width: 520px;
+    margin: 0 auto;
+}
+
+    .hero-community-image {
+        max-width: 420px;
+    }
+
+}
+
+
+/* ========================================
+   CONNECT AUTHOR BUTTON
+======================================== */
+
+.connect-author-btn {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 14px 28px;
+    background: #2563eb;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: 0.3s ease;
+}
+
+.connect-author-btn:hover {
+    transform: translateY(-2px);
+}
+
+/* =========================================
+   ABOUT PAGE HERO
+   ========================================= */
+
+.about-hero {
+    padding: 120px 0 100px;
+}
+
+.about-hero-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.about-hero .tagline {
+    margin-bottom: 45px;
+}
+
+.about-hero h1 {
+    max-width: 850px;
+    margin: 0 0 70px;
+    font-size: 64px;
+    line-height: 1.05;
+    letter-spacing: -2px;
+    color: #182238;
+}
+
+.about-hero h1 span {
+    color: #0877f9;
+}
+
+.about-hero .hero-text {
+    max-width: 700px;
+    margin-bottom: 50px;
+    font-size: 20px;
+    line-height: 1.6;
+    color: #5d6675;
+}
+
+.connect-author-btn {
+    display: inline-block;
+    padding: 16px 28px;
+
+    background: #2864e8;
+    color: #ffffff;
+
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: 700;
+
+    border-radius: 8px;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.connect-author-btn:hover {
+    background: #1456d9;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+
+/* =========================================
+   ABOUT PAGE - MOBILE
+   ========================================= */
+
+@media (max-width: 768px) {
+
+    .about-hero {
+        padding: 80px 20px 70px;
+    }
+
+    .about-hero-content {
+        width: 100%;
+    }
+
+    .about-hero .tagline {
+        margin-bottom: 30px;
+    }
+
+    .about-hero h1 {
+        font-size: 44px;
+        line-height: 1.08;
+        letter-spacing: -1px;
+        margin-bottom: 40px;
+    }
+
+    .about-hero .hero-text {
+        font-size: 18px;
+        line-height: 1.6;
+        margin-bottom: 35px;
+    }
+
+    .connect-author-btn {
+        font-size: 16px;
+        padding: 14px 22px;
+    }
+}
+
+/* =========================================
+   BLOG PAGE HERO
+   ========================================= */
+
+.blog-hero {
+    padding: 100px 0 80px;
+}
+
+.blog-hero-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.blog-hero .tagline {
+    margin-bottom: 28px;
+}
+
+.blog-hero h1 {
+    max-width: 900px;
+    margin: 0 0 32px;
+
+    font-size: 64px;
+    line-height: 1.0;
+    letter-spacing: -2px;
+
+    color: #182238;
+}
+
+.blog-hero h1 span {
+    color: #0877f9;
+}
+
+.blog-hero .hero-text {
+    max-width: 800px;
+
+    margin: 0;
+
+    font-size: 20px;
+    line-height: 1.6;
+
+    color: #5d6675;
+}
+
+
+/* =========================================
+   BLOG PAGE - MOBILE
+   ========================================= */
+
+@media (max-width: 768px) {
+
+    .blog-hero {
+        padding: 70px 20px 60px;
+    }
+
+    .blog-hero-content {
+        width: 100%;
+    }
+
+    .blog-hero .tagline {
+        margin-bottom: 22px;
+    }
+
+    .blog-hero h1 {
+        font-size: 44px;
+        line-height: 1.0;
+        letter-spacing: -1px;
+        margin-bottom: 28px;
+    }
+
+    .blog-hero .hero-text {
+        font-size: 18px;
+        line-height: 1.6;
+    }
+}
+
+/* =========================================
+   EMPLOYEE CENTRAL PAGE HERO
+   ========================================= */
+
+.ec-hero {
+    padding: 100px 0 80px;
+}
+
+.ec-hero-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.ec-hero .tagline {
+    margin-bottom: 28px;
+}
+
+.ec-hero h1 {
+    max-width: 900px;
+    margin: 0 0 32px;
+
+    font-size: 64px;
+    line-height: 1.0;
+    letter-spacing: -2px;
+
+    color: #182238;
+}
+
+.ec-hero h1 span {
+    color: #0877f9;
+}
+
+.ec-hero .hero-text {
+    max-width: 800px;
+
+    margin: 0;
+
+    font-size: 20px;
+    line-height: 1.4;
+
+    color: #5d6675;
+}
+
+
+/* =========================================
+   EMPLOYEE CENTRAL - MOBILE
+   ========================================= */
+
+@media (max-width: 768px) {
+
+    .ec-hero {
+        padding: 70px 20px 60px;
+    }
+
+    .ec-hero-content {
+        width: 100%;
+    }
+
+    .ec-hero .tagline {
+        margin-bottom: 22px;
+    }
+
+    .ec-hero h1 {
+        font-size: 44px;
+        line-height: 1.0;
+        letter-spacing: -1px;
+        margin-bottom: 28px;
+    }
+
+    .ec-hero .hero-text {
+        font-size: 18px;
+        line-height: 1.4;
+    }
+}
+
+.inner-hero .hero-content {
+    display: block;
+    width: 100%;
+}
+
+.inner-hero .hero-content {
+    display: block;
+    width: 100%;
+}
+
+.inner-hero .hero-content {
+    display: block;
+    width: 100%;
 }

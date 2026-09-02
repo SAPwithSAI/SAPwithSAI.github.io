@@ -108,7 +108,10 @@
 
     <section class="hero">
 
-        <div class="hero-content">
+    <div class="hero-content">
+
+        <!-- LEFT SIDE -->
+        <div class="hero-left">
 
             <p class="tagline">
                 SAP LEARNING HUB
@@ -144,7 +147,40 @@
 
         </div>
 
-    </section>
+
+        <!-- RIGHT SIDE -->
+        <div class="hero-visual">
+
+            <img
+                src="assets/images/sapwithsai-community.png"
+                alt="SAPwithSAI Learning Community"
+                class="hero-community-image"
+            >
+
+            <div class="subscribe-card" id="subscribeCard">
+
+                <h3>Stay Updated</h3>
+
+                <p>
+                    Get notified whenever we publish a new SAP SuccessFactors
+                    or SAP CPI article.
+                </p>
+
+                <button
+                    class="subscribe-btn"
+                    id="openSubscribe"
+                    type="button"
+                >
+                    Subscribe — It's Free
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
 
 
         <!-- Categories -->
@@ -302,7 +338,7 @@
 
     </footer>
 
-<script src="js/articles.js"></script>
+
 
 <script>
 
@@ -335,6 +371,65 @@
     }
 
 </script>
+<!-- Subscribe Modal -->
+<div class="subscribe-modal" id="subscribeModal">
 
+    <div class="subscribe-modal-content">
+
+        <button
+            class="close-subscribe"
+            id="closeSubscribe"
+            aria-label="Close"
+        >
+            ×
+        </button>
+
+        <div id="subscribeFormContent">
+
+            <h2>Join SAPwithSAI</h2>
+
+            <p>
+                Subscribe for free and receive updates whenever a new
+                SAP SuccessFactors or SAP CPI blog is published.
+            </p>
+
+            <form id="subscribeForm">
+
+                <input
+                    type="email"
+                    id="subscriberEmail"
+                    placeholder="Enter your Gmail address"
+                    required
+                >
+
+                <button type="submit">
+                    Subscribe for Free
+                </button>
+
+            </form>
+
+        </div>
+
+        <div
+            class="subscribe-success"
+            id="subscribeSuccess"
+            style="display: none;"
+        >
+
+            <div class="success-icon">✓</div>
+
+            <h2>Thanks for subscribing!</h2>
+
+            <p>
+                You'll receive an email whenever we publish a new blog
+                on SAPwithSAI.
+            </p>
+
+        </div>
+
+    </div>
+</div>
+
+<script src="js/articles.js"></script>
 </body>
 </html>
