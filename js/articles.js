@@ -508,56 +508,48 @@ document.addEventListener("keydown", function (event) {
 
 /* Submit Subscription Form
    -----------------------------------------------------------
-   To collect real emails, create a free form (for example at
-   formspree.io) and paste its URL below, like:
-   "https://formspree.io/f/xxxxxxxx"
-   Until then, the form tells visitors honestly that
-   subscriptions are not open yet (instead of a fake "success").
+   Newsletter service: Buttondown (free for the first 100 subscribers).
+
+   After you create your Buttondown account, type your Buttondown
+   username between the quotes below, for example:
+       const BUTTONDOWN_USERNAME = "sapwithsai";
+
+   While it is empty, the form honestly tells visitors that
+   subscriptions are not open yet.
 */
-const SUBSCRIBE_ENDPOINT = "";
+const BUTTONDOWN_USERNAME = "";
 
 if (subscribeForm) {
-    subscribeForm.addEventListener("submit", async function (event) {
-
-        event.preventDefault();
+    subscribeForm.addEventListener("submit", function (event) {
 
         const message = document.getElementById("subscribeMessage");
-        const submitButton = subscribeForm.querySelector("button[type='submit']");
 
-        function showMessage(text) {
+        if (!BUTTONDOWN_USERNAME) {
+            event.preventDefault();
+
             if (message) {
-                message.textContent = text;
+                message.textContent =
+                    "Subscriptions are opening soon. Please check back shortly.";
             }
-        }
 
-        if (!SUBSCRIBE_ENDPOINT) {
-            showMessage("Subscriptions are opening soon. Please check back shortly.");
             return;
         }
 
-        submitButton.disabled = true;
-        showMessage("");
+        /* Send the email address to Buttondown.
+           Buttondown opens its confirmation page in a new tab and
+           emails the visitor a link to confirm the subscription. */
+        subscribeForm.action =
+            "https://buttondown.com/api/emails/embed-subscribe/" +
+            encodeURIComponent(BUTTONDOWN_USERNAME);
 
-        try {
+        subscribeForm.method = "post";
+        subscribeForm.target = "_blank";
 
-            const response = await fetch(SUBSCRIBE_ENDPOINT, {
-                method: "POST",
-                headers: { "Accept": "application/json" },
-                body: new FormData(subscribeForm)
-            });
-
-            if (response.ok) {
-                subscribeFormContent.style.display = "none";
-                subscribeSuccess.style.display = "block";
-            } else {
-                showMessage("Something went wrong. Please try again.");
-            }
-
-        } catch (error) {
-            showMessage("Could not connect. Please check your internet and try again.");
-        }
-
-        submitButton.disabled = false;
+        /* Show our own "check your inbox" message */
+        setTimeout(function () {
+            subscribeFormContent.style.display = "none";
+            subscribeSuccess.style.display = "block";
+        }, 300);
 
     });
 }
