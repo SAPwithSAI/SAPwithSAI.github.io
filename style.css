@@ -878,6 +878,7 @@ html {
     border-radius: 16px;
     padding: 25px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    container-type: inline-size;
 }
 
 .follow-card h3 {
@@ -890,23 +891,28 @@ html {
     line-height: 1.6;
 }
 
+/* all buttons side by side on one line */
 .follow-links {
     display: flex;
     flex-wrap: wrap;
-    gap: 12px;
+    gap: 10px;
 }
 
 .follow-btn {
+    flex: 1 1 0;
+    min-width: 118px;
     display: inline-flex;
     align-items: center;
-    gap: 10px;
-    padding: 12px 20px;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 14px;
     border-radius: 8px;
     background: #2563eb;
     color: #ffffff;
-    font-size: 1rem;
+    font-size: 0.95rem;
     font-weight: 600;
     text-decoration: none;
+    white-space: nowrap;
     transition: 0.3s ease;
 }
 
@@ -918,6 +924,29 @@ html {
     width: 20px;
     height: 20px;
     flex-shrink: 0;
+}
+
+/* narrow card (small screens): icons only, still on one line */
+@container (max-width: 380px) {
+
+    .follow-btn {
+        min-width: 0;
+        padding: 12px 10px;
+    }
+
+    .follow-btn svg {
+        width: 24px;
+        height: 24px;
+    }
+
+    .follow-label {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        white-space: nowrap;
+    }
 }
 
 
