@@ -461,97 +461,55 @@ function displayFeaturedArticle() {
 }
 
 /* ========================================
-   SAPwithSAI SUBSCRIBE FORM
+   SOCIAL LINKS ("Follow SAPwithSAI" card)
 ======================================== */
 
-const openSubscribe = document.getElementById("openSubscribe");
-const closeSubscribe = document.getElementById("closeSubscribe");
-const subscribeModal = document.getElementById("subscribeModal");
-const subscribeForm = document.getElementById("subscribeForm");
-const subscribeFormContent = document.getElementById("subscribeFormContent");
-const subscribeSuccess = document.getElementById("subscribeSuccess");
+/* Paste your full links between the quotes, for example:
+       telegram: "https://t.me/yourchannel",
+       youtube: "https://www.youtube.com/@yourchannel",
+   Leave a link empty ("") to hide that button.
+   If every link is empty, the whole card stays hidden. */
 
+const SOCIAL_LINKS = {
+    telegram: "https://t.me/sapwithsai",
+    youtube: "https://www.youtube.com/@DRS-26",
+    instagram: "https://www.instagram.com/sapwithsai",
+    linkedin: ""
+};
 
-/* Open Subscribe Modal */
-if (openSubscribe && subscribeModal) {
-    openSubscribe.addEventListener("click", function () {
-        subscribeModal.classList.add("active");
-    });
-}
+(function showSocialLinks() {
 
+    const card = document.getElementById("followCard");
 
-/* Close Subscribe Modal */
-if (closeSubscribe && subscribeModal) {
-    closeSubscribe.addEventListener("click", function () {
-        subscribeModal.classList.remove("active");
-    });
-}
-
-
-/* Close when clicking outside the popup */
-if (subscribeModal) {
-    subscribeModal.addEventListener("click", function (event) {
-        if (event.target === subscribeModal) {
-            subscribeModal.classList.remove("active");
-        }
-    });
-}
-
-
-/* Close with Escape key */
-document.addEventListener("keydown", function (event) {
-    if (event.key === "Escape" && subscribeModal) {
-        subscribeModal.classList.remove("active");
+    if (!card) {
+        return;
     }
-});
 
+    let visibleCount = 0;
 
-/* Submit Subscription Form
-   -----------------------------------------------------------
-   Newsletter service: Buttondown (free for the first 100 subscribers).
+    Object.keys(SOCIAL_LINKS).forEach(function (name) {
 
-   After you create your Buttondown account, type your Buttondown
-   username between the quotes below, for example:
-       const BUTTONDOWN_USERNAME = "sapwithsai";
+        const link = card.querySelector('[data-social="' + name + '"]');
 
-   While it is empty, the form honestly tells visitors that
-   subscriptions are not open yet.
-*/
-const BUTTONDOWN_USERNAME = "";
-
-if (subscribeForm) {
-    subscribeForm.addEventListener("submit", function (event) {
-
-        const message = document.getElementById("subscribeMessage");
-
-        if (!BUTTONDOWN_USERNAME) {
-            event.preventDefault();
-
-            if (message) {
-                message.textContent =
-                    "Subscriptions are opening soon. Please check back shortly.";
-            }
-
+        if (!link) {
             return;
         }
 
-        /* Send the email address to Buttondown.
-           Buttondown opens its confirmation page in a new tab and
-           emails the visitor a link to confirm the subscription. */
-        subscribeForm.action =
-            "https://buttondown.com/api/emails/embed-subscribe/" +
-            encodeURIComponent(BUTTONDOWN_USERNAME);
+        const url = (SOCIAL_LINKS[name] || "").trim();
 
-        subscribeForm.method = "post";
-        subscribeForm.target = "_blank";
-
-        /* Show our own "check your inbox" message */
-        setTimeout(function () {
-            subscribeFormContent.style.display = "none";
-            subscribeSuccess.style.display = "block";
-        }, 300);
+        /* only secure https links are accepted */
+        if (url.indexOf("https://") === 0) {
+            link.href = url;
+            link.style.display = "";
+            visibleCount++;
+        } else {
+            link.style.display = "none";
+        }
 
     });
-}
+
+    card.style.display = visibleCount > 0 ? "" : "none";
+
+})();
 
 displayFeaturedArticle();

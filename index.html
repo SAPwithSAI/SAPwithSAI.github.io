@@ -165,22 +165,35 @@
                 class="hero-community-image"
             >
 
-            <div class="subscribe-card" id="subscribeCard">
+            <div class="follow-card" id="followCard" style="display:none;">
 
-                <h3>Stay Updated</h3>
+                <h3>Follow SAPwithSAI</h3>
 
                 <p>
-                    Get notified whenever we publish a new SAP SuccessFactors
-                    or SAP CPI article.
+                    Join the community for new SAP SuccessFactors and
+                    SAP CPI articles, tips and updates.
                 </p>
 
-                <button
-                    class="subscribe-btn"
-                    id="openSubscribe"
-                    type="button"
-                >
-                    Subscribe — It's Free
-                </button>
+                <div class="follow-links">
+
+                    <a class="follow-btn" data-social="telegram" href="#" target="_blank" rel="noopener noreferrer" style="display:none;">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 3L3 10.5l6.5 2.5L12 20l3-4.5 4.5 3z M9.5 13L21 3" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/></svg>
+                        Telegram
+                    </a>
+                    <a class="follow-btn" data-social="youtube" href="#" target="_blank" rel="noopener noreferrer" style="display:none;">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M10 9.2l5 2.8-5 2.8z" fill="currentColor"/></svg>
+                        YouTube
+                    </a>
+                    <a class="follow-btn" data-social="instagram" href="#" target="_blank" rel="noopener noreferrer" style="display:none;">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></svg>
+                        Instagram
+                    </a>
+                    <a class="follow-btn" data-social="linkedin" href="#" target="_blank" rel="noopener noreferrer" style="display:none;">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 11v5M8 8v.01M12 16v-5m0 2c0-1.5 1-2 2-2s2 .8 2 2.5V16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                        LinkedIn
+                    </a>
+
+                </div>
 
             </div>
 
@@ -386,76 +399,6 @@
     }
 
 </script>
-<!-- Subscribe Modal -->
-<div class="subscribe-modal" id="subscribeModal">
-
-    <div class="subscribe-modal-content">
-
-        <button
-            class="close-subscribe"
-            id="closeSubscribe"
-            aria-label="Close"
-        >
-            ×
-        </button>
-
-        <div id="subscribeFormContent">
-
-            <h2>Join SAPwithSAI</h2>
-
-            <p>
-                Subscribe for free and receive updates whenever a new
-                SAP SuccessFactors or SAP CPI blog is published.
-            </p>
-
-            <form id="subscribeForm">
-
-                <input
-                    type="email"
-                    id="subscriberEmail"
-                    name="email"
-                    placeholder="Enter your email address"
-                    required
-                >
-
-                <button type="submit">
-                    Subscribe for Free
-                </button>
-
-                <input type="hidden" name="embed" value="1">
-
-                <p class="subscribe-message" id="subscribeMessage" role="status"></p>
-
-                <p style="font-size:0.8rem; color:#6b7785; margin-top:10px;">
-                    We only use your email to send article updates.
-                    Unsubscribe anytime.
-                </p>
-
-            </form>
-
-        </div>
-
-        <div
-            class="subscribe-success"
-            id="subscribeSuccess"
-            style="display: none;"
-        >
-
-            <div class="success-icon">✓</div>
-
-            <h2>Almost done!</h2>
-
-            <p>
-                Please check your inbox and click the confirmation link
-                to complete your subscription. After that, you'll receive
-                an email whenever we publish a new article.
-            </p>
-
-        </div>
-
-    </div>
-</div>
-
 <script src="js/articles.js"></script>
 </body>
 </html>
