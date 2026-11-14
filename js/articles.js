@@ -171,7 +171,7 @@ function displayLatestArticles() {
     }
 
 
-    articles.forEach(article => {
+    articles.slice(0, 6).forEach(article => {
 
         const card =
             document.createElement("article");
@@ -506,14 +506,58 @@ document.addEventListener("keydown", function (event) {
 });
 
 
-/* Submit Subscription Form */
+/* Submit Subscription Form
+   -----------------------------------------------------------
+   To collect real emails, create a free form (for example at
+   formspree.io) and paste its URL below, like:
+   "https://formspree.io/f/xxxxxxxx"
+   Until then, the form tells visitors honestly that
+   subscriptions are not open yet (instead of a fake "success").
+*/
+const SUBSCRIBE_ENDPOINT = "";
+
 if (subscribeForm) {
-    subscribeForm.addEventListener("submit", function (event) {
+    subscribeForm.addEventListener("submit", async function (event) {
 
         event.preventDefault();
 
-        subscribeFormContent.style.display = "none";
-        subscribeSuccess.style.display = "block";
+        const message = document.getElementById("subscribeMessage");
+        const submitButton = subscribeForm.querySelector("button[type='submit']");
+
+        function showMessage(text) {
+            if (message) {
+                message.textContent = text;
+            }
+        }
+
+        if (!SUBSCRIBE_ENDPOINT) {
+            showMessage("Subscriptions are opening soon. Please check back shortly.");
+            return;
+        }
+
+        submitButton.disabled = true;
+        showMessage("");
+
+        try {
+
+            const response = await fetch(SUBSCRIBE_ENDPOINT, {
+                method: "POST",
+                headers: { "Accept": "application/json" },
+                body: new FormData(subscribeForm)
+            });
+
+            if (response.ok) {
+                subscribeFormContent.style.display = "none";
+                subscribeSuccess.style.display = "block";
+            } else {
+                showMessage("Something went wrong. Please try again.");
+            }
+
+        } catch (error) {
+            showMessage("Could not connect. Please check your internet and try again.");
+        }
+
+        submitButton.disabled = false;
 
     });
 }

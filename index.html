@@ -52,6 +52,14 @@
 >
 
 <link rel="stylesheet" href="style.css">
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+    <link rel="apple-touch-icon" href="/assets/favicon/apple-touch-icon.png">
+    <!-- Social sharing image -->
+    <meta property="og:image" content="https://sapwithsai.github.io/assets/images/sapwithsai-community.png">
+    <meta name="twitter:card" content="summary_large_image">
 </head>
 
 <body>
@@ -152,7 +160,7 @@
         <div class="hero-visual">
 
             <img
-                src="assets/images/sapwithsai-community.png"
+                src="assets/images/sapwithsai-community.webp"
                 alt="SAPwithSAI Learning Community"
                 class="hero-community-image"
             >
@@ -336,7 +344,14 @@
 
         </div>
 
-    </footer>
+    
+    <p class="footer-disclaimer">
+        SAPwithSAI is an independent learning site and is not affiliated with or
+        endorsed by SAP SE. SAP and SAP SuccessFactors are trademarks or
+        registered trademarks of SAP SE.
+    </p>
+
+</footer>
 
 
 
@@ -398,13 +413,16 @@
                 <input
                     type="email"
                     id="subscriberEmail"
-                    placeholder="Enter your Gmail address"
+                    name="email"
+                    placeholder="Enter your email address"
                     required
                 >
 
                 <button type="submit">
                     Subscribe for Free
                 </button>
+
+                <p class="subscribe-message" id="subscribeMessage" role="status"></p>
 
             </form>
 

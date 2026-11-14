@@ -1302,3 +1302,33 @@ html {
     display: block;
     width: 100%;
 }
+
+/* ========================================
+   ADDED: coming soon labels, footer disclaimer,
+   subscribe message
+======================================== */
+
+.coming-soon {
+    display: inline-block;
+    color: #8a93a3;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.footer-disclaimer {
+    max-width: 1140px;
+    margin: 25px auto 0;
+    padding-top: 18px;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    font-size: 0.8rem;
+    line-height: 1.6;
+    color: #8f99ab;
+    text-align: center;
+}
+
+.subscribe-message {
+    margin-top: 12px;
+    min-height: 1.2em;
+    font-size: 0.9rem;
+    color: #b42318;
+}
