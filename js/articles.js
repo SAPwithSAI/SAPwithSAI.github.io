@@ -2,6 +2,83 @@ const articles = [
 
 
     {
+        title: "SAP BTP and SAP CPI Basics: Palette, Adapters and Every Option in the Cockpit",
+
+        category: "SAP CPI",
+
+        description:
+            "A beginner-friendly tour of SAP BTP and Cloud Integration: the cockpit areas, the integration flow palette and the main adapters.",
+
+        url:
+            "articles/sap-cpi/sap-btp-and-cpi-basics-palette-adapters-cockpit.html",
+
+        date: "November 2026",
+
+        readTime: "13 min read",
+
+        featured: false
+    },
+
+
+    {
+        title: "Why Is SAP CPI Used? Use Cases and Real-World Company Examples",
+
+        category: "SAP CPI",
+
+        description:
+            "Why companies use SAP CPI, typical project scenarios and real examples from companies that published their integration stories.",
+
+        url:
+            "articles/sap-cpi/why-sap-cpi-is-used-use-cases-and-real-world-examples.html",
+
+        date: "November 2026",
+
+        readTime: "7 min read",
+
+        featured: false
+    },
+
+
+    {
+        title: "Build Your First SAP CPI Integration Flow: Sender and Receiver Explained (Using Postman)",
+
+        category: "SAP CPI",
+
+        description:
+            "Build a first integration flow step by step, understand sender and receiver, and test it from Postman.",
+
+        url:
+            "articles/sap-cpi/first-cpi-integration-flow-sender-receiver-postman.html",
+
+        date: "November 2026",
+
+        readTime: "10 min read",
+
+        featured: false
+    },
+
+
+    {
+        title: "SAP CPI Encryption and Decryption in a Simple Flow (Using Postman)",
+
+        category: "SAP CPI",
+
+        description:
+            "Encrypt and decrypt a message in SAP CPI with PKCS7/CMS and test the flows with Postman.",
+
+        url:
+            "articles/sap-cpi/sap-cpi-encryption-decryption-pkcs7-postman.html",
+
+        date: "November 2026",
+
+        readTime: "9 min read",
+
+        featured: false
+    },
+
+
+
+    {
         title: "Concurrent Employment in SAP SuccessFactors Employee Central",
 
         category: "Employee Central",
@@ -154,6 +231,80 @@ function displayECArticles() {
 
 
 displayECArticles();
+
+
+function displayCPIArticles() {
+
+    const container =
+        document.getElementById("cpi-articles");
+
+    if (!container) {
+        return;
+    }
+
+
+    const cpiArticles =
+        articles.filter(
+            article =>
+                article.category === "SAP CPI"
+        );
+
+
+    container.innerHTML = "";
+
+
+    cpiArticles.forEach(article => {
+
+        const card =
+            document.createElement("article");
+
+        card.className =
+            "article-card";
+
+
+        card.innerHTML = `
+
+            <div class="article-category">
+                ${article.category}
+            </div>
+
+            <h3>
+                ${article.title}
+            </h3>
+
+            <p>
+                ${article.description}
+            </p>
+
+            <div class="article-card-meta">
+
+                <span>
+                    ${article.date}
+                </span>
+
+                <span>•</span>
+
+                <span>
+                    ${article.readTime}
+                </span>
+
+            </div>
+
+            <a href="${article.url}">
+                Read Article →
+            </a>
+
+        `;
+
+
+        container.appendChild(card);
+
+    });
+
+}
+
+
+displayCPIArticles();
 
 
 

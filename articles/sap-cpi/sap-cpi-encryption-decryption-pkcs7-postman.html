@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        SAP CPI Encryption and Decryption in a Simple Flow (Using Postman) | SAPwithSAI
+    </title>
+    <meta name="description"
+          content="Learn encryption and decryption in SAP CPI with PKCS7/CMS: create a key pair, build encrypt and decrypt flows and test them with Postman.">
+    <meta name="author" content="SAPwithSAI">
+    <meta name="robots" content="index, follow">
+    <link
+    rel="canonical"
+    href="https://sapwithsai.github.io/articles/sap-cpi/sap-cpi-encryption-decryption-pkcs7-postman.html"
+>
+<!-- Open Graph -->
+    <meta
+        property="og:title"
+        content="SAP CPI Encryption and Decryption in a Simple Flow (Using Postman) | SAPwithSAI"
+    >
+    <meta
+        property="og:description"
+        content="Learn encryption and decryption in SAP CPI with PKCS7/CMS: create a key pair, build encrypt and decrypt flows and test them with Postman."
+    >
+    <meta
+        property="og:type"
+        content="article"
+    >
+    <meta
+        property="og:site_name"
+        content="SAPwithSAI"
+    >
+<meta
+    property="og:url"
+    content="https://sapwithsai.github.io/articles/sap-cpi/sap-cpi-encryption-decryption-pkcs7-postman.html"
+>
+    <link rel="stylesheet" href="../../style.css">
+    <!-- Article Schema -->
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "SAP CPI Encryption and Decryption in a Simple Flow (Using Postman)",
+    "description": "Learn encryption and decryption in SAP CPI with PKCS7/CMS: create a key pair, build encrypt and decrypt flows and test them with Postman.",
+    "author": {
+        "@type": "Organization",
+        "name": "SAPwithSAI"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "SAPwithSAI"
+    },
+    "datePublished": "2026-11-15",
+    "dateModified": "2026-11-15",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://sapwithsai.github.io/articles/sap-cpi/sap-cpi-encryption-decryption-pkcs7-postman.html"
+    }
+}
+</script>
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+    <link rel="apple-touch-icon" href="/assets/favicon/apple-touch-icon.png">
+    <!-- Social sharing image -->
+    <meta property="og:image" content="https://sapwithsai.github.io/assets/images/sapwithsai-community.png">
+    <meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<div class="reading-progress" id="reading-progress"></div>
+
+<!-- Navigation -->
+
+<header>
+
+    <nav class="navbar">
+
+        <div class="logo">
+            SAPwith<span>SAI</span>
+        </div>
+
+        <button
+            class="menu-toggle"
+            id="menu-toggle"
+            aria-label="Open navigation">
+            ☰
+        </button>
+
+        <div class="nav-links">
+
+            <a href="../../index.html">
+                Home
+            </a>
+
+            <a href="../../blog.html">
+                Blog
+            </a>
+
+            <a href="../../employee-central.html">
+                Employee Central
+            </a>
+
+            <a href="../../cpi.html">
+                SAP CPI
+            </a>
+
+            <a href="../../interview-prep.html">
+                Interview Prep
+            </a>
+
+            <a href="../../about.html">
+                About
+            </a>
+
+        </div>
+
+    </nav>
+
+</header>
+
+<!-- Article -->
+
+<main>
+
+    <article class="blog-article">
+
+        <!-- Breadcrumb -->
+
+        <div class="breadcrumb">
+
+            <a href="../../index.html">
+                Home
+            </a>
+
+            <span> / </span>
+
+            <a href="../../cpi.html">
+                SAP CPI
+            </a>
+
+            <span> / </span>
+
+            <span>
+                Encryption and Decryption in CPI
+            </span>
+
+        </div>
+
+        <!-- Article Header -->
+
+        <header class="article-header">
+
+            <div class="article-category">
+                SAP CPI
+            </div>
+
+            <h1>
+                SAP CPI Encryption and Decryption in a Simple Flow (Using Postman)
+            </h1>
+
+            <p class="article-intro">
+                Protect a message inside SAP CPI. Create a key pair, build an encrypt flow and a decrypt flow with PKCS7/CMS, and test both with Postman.
+            </p>
+
+            <div class="article-meta">
+
+                <span>
+                    By SAPwithSAI
+                </span>
+
+                <span>•</span>
+
+                <span>
+                    November 2026
+                </span>
+
+                <span>•</span>
+
+                <span>
+                    9 min read
+                </span>
+
+            </div>
+
+        </header>
+
+        <!-- Table of Contents -->
+
+        <div class="table-of-contents">
+
+            <h3>
+                In this article
+            </h3>
+
+            <ul>
+                <li><a href="#why-encrypt">Why Encrypt Messages in an Integration Flow?</a></li><li><a href="#how-it-works">How a "Digital Envelope" Works</a></li><li><a href="#security-elements">Security Elements in the Palette</a></li><li><a href="#what-you-will-build">What You Will Build</a></li><li><a href="#key-pair">Step 1: Create a Key Pair in the Keystore</a></li><li><a href="#encrypt-flow">Step 2: Build the Encrypt Flow</a></li><li><a href="#decrypt-flow">Step 3: Build the Decrypt Flow</a></li><li><a href="#postman-test">Step 4: Test Both Flows in Postman</a></li><li><a href="#troubleshooting">Troubleshooting</a></li><li><a href="#real-world-notes">How This Looks in a Real Project</a></li><li><a href="#interview-questions">Interview Questions</a></li><li><a href="#faqs">Frequently Asked Questions</a></li><li><a href="#conclusion">Conclusion</a></li>
+            </ul>
+
+        </div>
+
+        <!-- Article Content -->
+
+        <div class="article-content">
+
+<h2 id="why-encrypt">Why Encrypt Messages in an Integration Flow?</h2>
+
+<p>
+    Most connections in CPI already use HTTPS, which encrypts the data while it travels between two systems.
+    That is called <strong>transport-level</strong> security. But a message does not always stay inside one connection.
+    It can be written to a file, dropped on an SFTP server, sent by email or handled by several systems before it reaches the
+    final receiver. In those cases you can protect the message itself. That is <strong>message-level</strong>
+    security, and it is what the Encryptor and Decryptor steps in CPI are for.
+</p>
+
+<p>
+    Typical examples are payroll or bank files sent to external providers, and messages that must stay unreadable
+    for everyone except the intended partner.
+</p>
+
+
+<h2 id="how-it-works">How a "Digital Envelope" Works</h2>
+
+<p>
+    Encrypting a large message directly with a public key would be slow. So the PKCS #7 / CMS standard (called
+    <strong>enveloped data</strong>) uses two kinds of keys together:
+</p>
+
+<ol>
+    <li>The content is encrypted with a fast <strong>symmetric</strong> key that is created on the fly.</li>
+    <li>That symmetric key is encrypted with the <strong>receiver's public key</strong> and stored inside the message.</li>
+    <li>Only the owner of the matching <strong>private key</strong> can unlock the symmetric key, and then the content.</li>
+</ol>
+
+<p>
+    The rule to remember: <strong>public key encrypts, private key decrypts.</strong> The sender needs only the
+    receiver's public key (a certificate). The private key never leaves the receiver.
+</p>
+
+
+<h2 id="security-elements">Security Elements in the Palette</h2>
+
+<div class="table-wrap">
+<table>
+    <thead>
+        <tr><th>Step</th><th>What it does</th><th>Common types</th></tr>
+    </thead>
+    <tbody>
+        <tr><td><strong>Encryptor</strong></td><td>Encrypts the message so only the receiver can read it.</td><td>PKCS7/CMS Enveloped Data, OpenPGP</td></tr>
+        <tr><td><strong>Decryptor</strong></td><td>Decrypts a message that was encrypted for you.</td><td>PKCS7/CMS Enveloped Data, OpenPGP</td></tr>
+        <tr><td><strong>Signer</strong></td><td>Adds a digital signature that proves who sent the message and that it was not changed.</td><td>PKCS7/CMS Signed Data, XML Signature, OpenPGP</td></tr>
+        <tr><td><strong>Verifier</strong></td><td>Checks a signature.</td><td>PKCS7/CMS Signed Data, XML Signature, OpenPGP</td></tr>
+    </tbody>
+</table>
+</div>
+
+<p>
+    In this article we use <strong>PKCS7/CMS Enveloped Data</strong>, because you can create the key pair directly in
+    the CPI keystore and you do not need any extra tools. OpenPGP is widely used with banks and payroll vendors, but it
+    needs separately prepared PGP key rings.
+</p>
+
+
+<h2 id="what-you-will-build">What You Will Build</h2>
+
+<p>You build two small flows, and test them with Postman:</p>
+
+<ul>
+    <li><strong>Encrypt flow</strong> at <code>/encrypt</code>: plain text in, encrypted and Base64-encoded text out.</li>
+    <li><strong>Decrypt flow</strong> at <code>/decrypt</code>: that Base64 text in, original plain text out.</li>
+</ul>
+
+<figure class="diagram"><svg viewBox="0 0 830 305" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Encrypt flow and decrypt flow in SAP CPI with Base64 encoding and one key pair in the keystore"><title>Encrypt flow and decrypt flow in SAP CPI with Base64 encoding and one key pair in the keystore</title><defs><marker id="mCry" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#0070f3"/></marker></defs><text x="10" y="26" font-size="14" font-weight="700" fill="#0070f3" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">Flow 1: /encrypt</text><rect x="10" y="38" width="140" height="66" rx="10" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/><text x="80.0" y="67.5" font-size="14" font-weight="700" fill="#172033" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">Postman</text><text x="80.0" y="84.5" font-size="12" font-weight="400" fill="#687282" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">sends plain text</text><line x1="150" y1="71" x2="175" y2="71" stroke="#0070f3" stroke-width="2" marker-end="url(#mCry)"/><rect x="175" y="38" width="140" height="66" rx="10" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/><text x="245.0" y="67.5" font-size="14" font-weight="700" fill="#172033" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">HTTPS sender</text><text x="245.0" y="84.5" font-size="12" font-weight="400" fill="#687282" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">address /encrypt</text><line x1="315" y1="71" x2="340" y2="71" stroke="#0070f3" stroke-width="2" marker-end="url(#mCry)"/><rect x="340" y="38" width="140" height="66" rx="10" fill="#f0f7ff" stroke="#0070f3" stroke-width="1.5"/><text x="410.0" y="59.0" font-size="14" font-weight="700" fill="#172033" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">Encryptor</text><text x="410.0" y="76.0" font-size="12" font-weight="400" fill="#687282" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">PKCS7/CMS</text><text x="410.0" y="93.0" font-size="12" font-weight="400" fill="#687282" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">uses the public key</text><line x1="480" y1="71" x2="505" y2="71" stroke="#0070f3" stroke-width="2" marker-end="url(#mCry)"/><rect x="505" y="38" width="140" height="66" rx="10" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/><text x="575.0" y="67.5" font-size="14" font-weight="700" fill="#172033" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">Base64 Encode</text><text x="575.0" y="84.5" font-size="12" font-weight="400" fill="#687282" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">binary → text</text><line x1="645" y1="71" x2="670" y2="71" stroke="#0070f3" stroke-width="2" marker-end="url(#mCry)"/><rect x="670" y="38" width="140" height="66" rx="10" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/><text x="740.0" y="67.5" font-size="14" font-weight="700" fill="#172033" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">Response</text><text x="740.0" y="84.5" font-size="12" font-weight="400" fill="#687282" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">encrypted Base64 text</text><text x="10" y="156" font-size="14" font-weight="700" fill="#0070f3" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">Flow 2: /decrypt</text><rect x="10" y="168" width="140" height="66" rx="10" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/><text x="80.0" y="197.5" font-size="14" font-weight="700" fill="#172033" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">Postman</text><text x="80.0" y="214.5" font-size="12" font-weight="400" fill="#687282" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">sends Base64 text</text><line x1="150" y1="201" x2="175" y2="201" stroke="#0070f3" stroke-width="2" marker-end="url(#mCry)"/><rect x="175" y="168" width="140" height="66" rx="10" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/><text x="245.0" y="197.5" font-size="14" font-weight="700" fill="#172033" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">HTTPS sender</text><text x="245.0" y="214.5" font-size="12" font-weight="400" fill="#687282" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">address /decrypt</text><line x1="315" y1="201" x2="340" y2="201" stroke="#0070f3" stroke-width="2" marker-end="url(#mCry)"/><rect x="340" y="168" width="140" height="66" rx="10" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/><text x="410.0" y="197.5" font-size="14" font-weight="700" fill="#172033" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">Base64 Decode</text><text x="410.0" y="214.5" font-size="12" font-weight="400" fill="#687282" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">text → binary</text><line x1="480" y1="201" x2="505" y2="201" stroke="#0070f3" stroke-width="2" marker-end="url(#mCry)"/><rect x="505" y="168" width="140" height="66" rx="10" fill="#f0f7ff" stroke="#0070f3" stroke-width="1.5"/><text x="575.0" y="189.0" font-size="14" font-weight="700" fill="#172033" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">Decryptor</text><text x="575.0" y="206.0" font-size="12" font-weight="400" fill="#687282" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">PKCS7/CMS</text><text x="575.0" y="223.0" font-size="12" font-weight="400" fill="#687282" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">uses the private key</text><line x1="645" y1="201" x2="670" y2="201" stroke="#0070f3" stroke-width="2" marker-end="url(#mCry)"/><rect x="670" y="168" width="140" height="66" rx="10" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/><text x="740.0" y="197.5" font-size="14" font-weight="700" fill="#172033" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">Response</text><text x="740.0" y="214.5" font-size="12" font-weight="400" fill="#687282" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">original plain text</text><rect x="130" y="258" width="590" height="36" rx="10" fill="#fff7ed" stroke="#f59e0b" stroke-width="1.5"/><text x="425" y="281" font-size="13" font-weight="600" fill="#172033" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">One key pair in the Keystore (alias): public part encrypts, private part decrypts</text></svg><figcaption>Figure 1: The two flows you build in this article.</figcaption></figure>
+
+<p>
+    This article continues from article 3. You need the same service instance and service key for Postman, and you
+    should already know how to create a flow with an HTTPS sender, deploy it and call it from Postman.
+</p>
+
+<div class="warning-box">
+    <strong>Use made-up text only</strong>
+    <p>
+        In this practice setup the same tenant can encrypt and decrypt. Never use real employee, salary or customer data
+        for learning. Use harmless sample text.
+    </p>
+</div>
+
+
+<h2 id="key-pair">Step 1: Create a Key Pair in the Keystore</h2>
+
+<ol>
+    <li>Open <strong>Monitor → Integrations and APIs</strong> and choose the <strong>Keystore</strong> tile under Manage Security.</li>
+    <li>Choose <strong>Create → Key Pair</strong>.</li>
+    <li>Enter an <strong>Alias</strong>, for example <code>sapwithsai_demo</code>, and a <strong>Common Name (CN)</strong>, for example <code>sapwithsai-demo</code>.</li>
+    <li>Choose the key type RSA and a key size of at least 2048 bits, set a validity period, and choose <strong>Create</strong>.</li>
+</ol>
+
+<p>
+    You now have one key pair with a public part (the certificate) and a private part. The alias is the name that
+    the Encryptor and Decryptor steps use to find them.
+</p>
+
+<div class="info-box">
+    <strong>Why one key pair here, and two in real life</strong>
+    <p>
+        In this demo one key pair plays both roles, like writing a letter to yourself. In a real scenario the receiving
+        partner creates the key pair and sends you only the <em>certificate</em>. You import it into your keystore and use it to
+        encrypt. The partner keeps the private key and uses it to decrypt.
+    </p>
+</div>
+
+<div class="warning-box">
+    <strong>The keystore is shared</strong>
+    <p>
+        All integration flows on the tenant use the same keystore. Give your demo key a unique alias and never delete or
+        overwrite entries you did not create, because other flows may depend on them.
+    </p>
+</div>
+
+
+<h2 id="encrypt-flow">Step 2: Build the Encrypt Flow</h2>
+
+<ol>
+    <li>In your package add a new integration flow, for example <code>Encrypt_Message_Demo</code>, and choose <strong>Edit</strong>.</li>
+    <li>Delete the Receiver. Draw a line from the Sender to the Start event and choose the <strong>HTTPS</strong> adapter, as in article 3.</li>
+    <li>Set <strong>Address</strong> to <code>/encrypt</code>, keep <strong>User Role</strong> <code>ESBMessaging.send</code> and untick <strong>CSRF Protected</strong> for this practice flow.</li>
+    <li>In the palette choose <strong>Security Elements → Encryptor → PKCS7/CMS Enveloped Data</strong> and drop it on the line between Start and End.</li>
+    <li>In the Encryptor properties, on the <strong>Processing</strong> tab, set:
+        <ul>
+            <li><strong>Content Encryption Algorithm:</strong> an AES option, for example <code>AES/CBC/PKCS5Padding</code>.</li>
+            <li><strong>Secret Key Length:</strong> the longest value offered for your algorithm, for example 256 bits. The available lengths depend on the algorithm you pick.</li>
+            <li><strong>Receiver Public Key Alias:</strong> choose <strong>Add</strong> and enter your alias, <code>sapwithsai_demo</code>.</li>
+        </ul>
+    </li>
+    <li>Add an <strong>Encoder → Base64 Encode</strong> step after the Encryptor.</li>
+    <li><strong>Save</strong> and <strong>Deploy</strong>.</li>
+</ol>
+
+<p>
+    <strong>Why the Base64 step?</strong> The encrypted result is binary data. Postman and other text tools cannot display binary data
+    properly. Base64 converts the binary data into plain text that you can copy and paste safely.
+</p>
+
+
+<h2 id="decrypt-flow">Step 3: Build the Decrypt Flow</h2>
+
+<ol>
+    <li>Add another integration flow, for example <code>Decrypt_Message_Demo</code>, and choose <strong>Edit</strong>.</li>
+    <li>Delete the Receiver and connect the Sender to Start with an <strong>HTTPS</strong> adapter. Set <strong>Address</strong> to <code>/decrypt</code> and, as before, role <code>ESBMessaging.send</code> and CSRF Protected off.</li>
+    <li>Add a <strong>Decoder → Base64 Decode</strong> step first. It turns the pasted text back into binary data.</li>
+    <li>After it add <strong>Security Elements → Decryptor → PKCS7/CMS Enveloped Data</strong>.</li>
+    <li>In the Decryptor properties enter the <strong>Private Key Alias</strong>: the same alias, <code>sapwithsai_demo</code>.</li>
+    <li><strong>Save</strong> and <strong>Deploy</strong>.</li>
+</ol>
+
+<p>
+    The order matters. When you encrypt you go <em>Encrypt → Base64 Encode</em>. When you decrypt you must reverse it:
+    <em>Base64 Decode → Decrypt</em>.
+</p>
+
+
+<h2 id="postman-test">Step 4: Test Both Flows in Postman</h2>
+
+<ol>
+    <li>Open <strong>Manage Integration Content</strong> and copy the endpoints of both flows. They end with <code>/http/encrypt</code> and <code>/http/decrypt</code>.</li>
+    <li>Create a Postman request <strong>POST</strong> to the <code>/encrypt</code> endpoint. Use the same OAuth 2.0 Client Credentials setup as in article 3.</li>
+    <li>In the body choose <strong>raw → Text</strong> and enter harmless text, for example:
+<pre><code>Hello SAPwithSAI - this is a secret test message</code></pre>
+    </li>
+    <li>Choose <strong>Send</strong>. The response is a long Base64 text. It is unreadable on purpose. Copy the <em>whole</em> response without extra spaces.</li>
+    <li>Create a second POST request to the <code>/decrypt</code> endpoint with the same authorization.</li>
+    <li>Paste the Base64 text into the body (<strong>raw → Text</strong>) and choose <strong>Send</strong>.</li>
+</ol>
+
+<p>
+    The response of the second call should be exactly your original text. You have just encrypted and decrypted a
+    message inside CPI.
+</p>
+
+<h3>Experiments that teach you a lot</h3>
+<ul>
+    <li>Change one character in the Base64 text and call <code>/decrypt</code> again. Decryption should fail, because the message was altered.</li>
+    <li>Encrypt the same text twice. The two Base64 results differ, because a new symmetric key is generated each time, yet both decrypt to the same text.</li>
+    <li>Remove the Base64 Decode step from the decrypt flow, redeploy and test. See which error you get, then restore it.</li>
+</ul>
+
+
+<h2 id="troubleshooting">Troubleshooting</h2>
+
+<div class="table-wrap">
+<table>
+    <thead>
+        <tr><th>Symptom</th><th>Likely cause</th><th>What to do</th></tr>
+    </thead>
+    <tbody>
+        <tr><td>Error about a missing key or alias</td><td>The alias is misspelled or the key pair does not exist.</td><td>Compare the alias in the flow with the Keystore tile. Aliases must match exactly.</td></tr>
+        <tr><td>Decryption fails</td><td>The text was changed, was copied with extra spaces or line breaks, or was encrypted with a different key pair.</td><td>Copy the whole response again. Use the same alias in both flows. Do not regenerate the key pair between the two calls.</td></tr>
+        <tr><td>Response is unreadable symbols</td><td>The Base64 Encode step is missing in the encrypt flow.</td><td>Add the encoder after the Encryptor and redeploy.</td></tr>
+        <tr><td>401 or 403</td><td>Authentication or role problem.</td><td>See the error table in article 3.</td></tr>
+        <tr><td>Changes have no effect</td><td>The flow was saved but not deployed.</td><td>Deploy again and wait until the status is <em>Started</em>.</td></tr>
+    </tbody>
+</table>
+</div>
+
+<p>
+    Option labels can differ slightly between releases. If a field is named differently on your tenant, use the
+    context-sensitive help of the step in the editor.
+</p>
+
+
+<h2 id="real-world-notes">How This Looks in a Real Project</h2>
+
+<ul>
+    <li><strong>Outbound:</strong> your flow builds a file or message, the Encryptor uses the <em>partner's public certificate</em> from your keystore, and the result is sent by SFTP or another channel.</li>
+    <li><strong>Inbound:</strong> a partner encrypts with <em>your</em> public certificate. Your flow decrypts with your private key, which stays in the keystore.</li>
+    <li><strong>Integrity and origin:</strong> encryption keeps a message secret. To prove who sent it and that nobody altered it, add a Signer and, on the other side, a Verifier.</li>
+    <li><strong>Certificate expiry:</strong> certificates expire. Note the validity dates in the Keystore and plan the renewal with your partner before they end.</li>
+    <li><strong>Never expose a decrypt endpoint openly.</strong> The demo endpoint exists only to teach. In production, decryption happens inside a protected flow that processes the result, not behind an open URL.</li>
+    <li><strong>Sensitive data and logs:</strong> do not use Debug or Trace log levels with real personal data, because they can show message content.</li>
+</ul>
+
+
+<h2 id="interview-questions">Interview Questions</h2>
+
+<h3>1. What is the difference between encryption and signing?</h3>
+<p>
+    Encryption keeps the content secret so only the intended receiver can read it. Signing proves who sent the message and
+    that it was not changed. They solve different problems and are often used together.
+</p>
+
+<h3>2. Which key encrypts and which key decrypts?</h3>
+<p>
+    The receiver's public key encrypts. The receiver's private key decrypts. The private key never leaves the receiver.
+</p>
+
+<h3>3. Why do we use Base64 after the Encryptor?</h3>
+<p>
+    Encrypted output is binary. Base64 converts it into text so that it can be displayed, copied and transported safely
+    through text-based channels. The receiver must Base64-decode it before decrypting.
+</p>
+
+<h3>4. What is the difference between PKCS7/CMS and OpenPGP in CPI?</h3>
+<p>
+    Both encrypt messages. PKCS7/CMS uses X.509 certificates and key pairs from the tenant keystore. OpenPGP uses PGP
+    key rings that are deployed as security material, and is common with banks and payroll providers.
+</p>
+
+<h3>5. Where are keys and certificates stored in CPI?</h3>
+<p>
+    Key pairs and certificates are stored in the tenant keystore (Monitor, Manage Security, Keystore). Credentials and
+    PGP key rings are deployed as security material.
+</p>
+
+
+<h2 id="faqs">Frequently Asked Questions</h2>
+
+<h3>Can I encrypt a file instead of a text message?</h3>
+<p>
+    Yes. The Encryptor works on the message body, so a file read by an SFTP adapter or a payload built in the flow can be
+    encrypted in the same way.
+</p>
+
+<h3>Do I need an extra tool to create the key?</h3>
+<p>
+    Not for PKCS7/CMS. You can create the key pair directly in the CPI keystore, as in this article. OpenPGP needs key rings
+    prepared with a PGP tool.
+</p>
+
+<h3>What happens if the certificate expires?</h3>
+<p>
+    Encryption or decryption with that key can fail. Replace the certificate before it expires and coordinate the change
+    with your partner.
+</p>
+
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>
+    You built two small flows that encrypt and decrypt a message with PKCS7/CMS, and tested them with Postman. You learned
+    why Base64 is needed, how the keystore alias connects the steps, and how the same pattern appears in real projects with
+    partners. From here you can move on to signing and verifying messages, to OpenPGP, and to mappings and error handling in
+    larger flows.
+</p>
+
+<div class="series-box"><strong>SAP CPI Beginner Series</strong><ol><li><a href="sap-btp-and-cpi-basics-palette-adapters-cockpit.html">1. SAP BTP and CPI basics: palette, adapters and the cockpit</a></li><li><a href="why-sap-cpi-is-used-use-cases-and-real-world-examples.html">2. Why SAP CPI is used: use cases and real-world examples</a></li><li><a href="first-cpi-integration-flow-sender-receiver-postman.html">3. Your first SAP CPI integration flow with Postman</a></li><li class="current"><span>4. SAP CPI encryption and decryption with Postman</span> (you are here)</li></ol><p class="series-next">Next: more SAP CPI articles are coming. Follow SAPwithSAI on Telegram to hear when they are published.</p></div>
+
+
+            <div class="author-box">
+
+                <strong>
+                    SAPwithSAI
+                </strong>
+
+                <p>
+                    Practical SAP SuccessFactors Employee Central and
+                    SAP CPI learning for consultants.
+                </p>
+
+            </div>
+
+        </div>
+
+    </article>
+
+</main>
+
+<!-- Footer -->
+
+<footer>
+
+    <div class="footer-content">
+
+        <div>
+
+            <div class="logo">
+                SAPwith<span>SAI</span>
+            </div>
+
+            <p>
+                Learn SAP. Build your expertise.
+            </p>
+
+        </div>
+
+        <div>
+
+            <p>
+                © 2026 SAPwithSAI. All rights reserved.
+            </p>
+
+        </div>
+
+    </div>
+
+    <p class="footer-disclaimer">
+        SAPwithSAI is an independent learning site and is not affiliated with or
+        endorsed by SAP SE. SAP and SAP SuccessFactors are trademarks or
+        registered trademarks of SAP SE.
+    </p>
+
+</footer>
+
+<button
+    class="back-to-top"
+    id="back-to-top"
+    aria-label="Back to top">
+
+    ↑
+
+</button>
+
+<script>
+
+    const progressBar = document.getElementById("reading-progress");
+    const backToTop = document.getElementById("back-to-top");
+
+    window.addEventListener("scroll", function () {
+
+        const scrollTop = window.scrollY;
+        const documentHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = (scrollTop / documentHeight) * 100;
+
+        progressBar.style.width = progress + "%";
+
+        if (scrollTop > 500) {
+            backToTop.classList.add("show");
+        } else {
+            backToTop.classList.remove("show");
+        }
+
+    });
+
+    backToTop.addEventListener("click", function () {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+</script>
+
+<script>
+
+    const menuToggle = document.getElementById("menu-toggle");
+    const navLinks = document.querySelector(".nav-links");
+
+    if (menuToggle && navLinks) {
+
+        menuToggle.addEventListener("click", function () {
+            navLinks.classList.toggle("active");
+        });
+
+        navLinks.querySelectorAll("a").forEach(link => {
+            link.addEventListener("click", function () {
+                navLinks.classList.remove("active");
+            });
+        });
+
+    }
+
+</script>
+
+</body>
+
+</html>

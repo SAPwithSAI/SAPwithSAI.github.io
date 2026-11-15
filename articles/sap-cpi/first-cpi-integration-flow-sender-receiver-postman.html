@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        Build Your First SAP CPI Integration Flow: Sender and Receiver Explained (Using Postman) | SAPwithSAI
+    </title>
+    <meta name="description"
+          content="Build your first SAP CPI integration flow step by step. Sender and receiver explained, with a HTTPS sender, a HTTP receiver and testing in Postman.">
+    <meta name="author" content="SAPwithSAI">
+    <meta name="robots" content="index, follow">
+    <link
+    rel="canonical"
+    href="https://sapwithsai.github.io/articles/sap-cpi/first-cpi-integration-flow-sender-receiver-postman.html"
+>
+<!-- Open Graph -->
+    <meta
+        property="og:title"
+        content="Build Your First SAP CPI Integration Flow: Sender and Receiver Explained (Using Postman) | SAPwithSAI"
+    >
+    <meta
+        property="og:description"
+        content="Build your first SAP CPI integration flow step by step. Sender and receiver explained, with a HTTPS sender, a HTTP receiver and testing in Postman."
+    >
+    <meta
+        property="og:type"
+        content="article"
+    >
+    <meta
+        property="og:site_name"
+        content="SAPwithSAI"
+    >
+<meta
+    property="og:url"
+    content="https://sapwithsai.github.io/articles/sap-cpi/first-cpi-integration-flow-sender-receiver-postman.html"
+>
+    <link rel="stylesheet" href="../../style.css">
+    <!-- Article Schema -->
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Build Your First SAP CPI Integration Flow: Sender and Receiver Explained (Using Postman)",
+    "description": "Build your first SAP CPI integration flow step by step. Sender and receiver explained, with a HTTPS sender, a HTTP receiver and testing in Postman.",
+    "author": {
+        "@type": "Organization",
+        "name": "SAPwithSAI"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "SAPwithSAI"
+    },
+    "datePublished": "2026-11-15",
+    "dateModified": "2026-11-15",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://sapwithsai.github.io/articles/sap-cpi/first-cpi-integration-flow-sender-receiver-postman.html"
+    }
+}
+</script>
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+    <link rel="apple-touch-icon" href="/assets/favicon/apple-touch-icon.png">
+    <!-- Social sharing image -->
+    <meta property="og:image" content="https://sapwithsai.github.io/assets/images/sapwithsai-community.png">
+    <meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<div class="reading-progress" id="reading-progress"></div>
+
+<!-- Navigation -->
+
+<header>
+
+    <nav class="navbar">
+
+        <div class="logo">
+            SAPwith<span>SAI</span>
+        </div>
+
+        <button
+            class="menu-toggle"
+            id="menu-toggle"
+            aria-label="Open navigation">
+            ☰
+        </button>
+
+        <div class="nav-links">
+
+            <a href="../../index.html">
+                Home
+            </a>
+
+            <a href="../../blog.html">
+                Blog
+            </a>
+
+            <a href="../../employee-central.html">
+                Employee Central
+            </a>
+
+            <a href="../../cpi.html">
+                SAP CPI
+            </a>
+
+            <a href="../../interview-prep.html">
+                Interview Prep
+            </a>
+
+            <a href="../../about.html">
+                About
+            </a>
+
+        </div>
+
+    </nav>
+
+</header>
+
+<!-- Article -->
+
+<main>
+
+    <article class="blog-article">
+
+        <!-- Breadcrumb -->
+
+        <div class="breadcrumb">
+
+            <a href="../../index.html">
+                Home
+            </a>
+
+            <span> / </span>
+
+            <a href="../../cpi.html">
+                SAP CPI
+            </a>
+
+            <span> / </span>
+
+            <span>
+                Your First CPI Integration Flow
+            </span>
+
+        </div>
+
+        <!-- Article Header -->
+
+        <header class="article-header">
+
+            <div class="article-category">
+                SAP CPI
+            </div>
+
+            <h1>
+                Build Your First SAP CPI Integration Flow: Sender and Receiver Explained (Using Postman)
+            </h1>
+
+            <p class="article-intro">
+                Build and test your first integration flow step by step. Learn what sender and receiver really mean, how a deployed flow gets its URL and how to call it from Postman.
+            </p>
+
+            <div class="article-meta">
+
+                <span>
+                    By SAPwithSAI
+                </span>
+
+                <span>•</span>
+
+                <span>
+                    November 2026
+                </span>
+
+                <span>•</span>
+
+                <span>
+                    10 min read
+                </span>
+
+            </div>
+
+        </header>
+
+        <!-- Table of Contents -->
+
+        <div class="table-of-contents">
+
+            <h3>
+                In this article
+            </h3>
+
+            <ul>
+                <li><a href="#what-you-will-build">What You Will Build</a></li><li><a href="#sender-and-receiver">Sender and Receiver Explained</a></li><li><a href="#prerequisites">Prerequisites</a></li><li><a href="#service-key">Step 1: Create the Credentials for Postman</a></li><li><a href="#part-a-build">Step 2: Build the Flow (Part A)</a></li><li><a href="#endpoint">Step 3: Find the Endpoint URL</a></li><li><a href="#postman-test">Step 4: Call the Flow from Postman</a></li><li><a href="#part-b-receiver">Step 5: Add a Receiver (Part B)</a></li><li><a href="#check-the-logs">Step 6: Check the Message Processing Log</a></li><li><a href="#common-errors">Common Errors and What They Usually Mean</a></li><li><a href="#interview-questions">Interview Questions</a></li><li><a href="#faqs">Frequently Asked Questions</a></li><li><a href="#conclusion">Conclusion</a></li>
+            </ul>
+
+        </div>
+
+        <!-- Article Content -->
+
+        <div class="article-content">
+
+<h2 id="what-you-will-build">What You Will Build</h2>
+
+<p>
+    In this article you build and test two small integration flows, step by step, with Postman acting as the
+    outside system:
+</p>
+
+<ol>
+    <li><strong>Part A – a flow with only a sender.</strong> Postman sends a text message, CPI adds a timestamp and sends the result back.</li>
+    <li><strong>Part B – a flow with a sender and a receiver.</strong> CPI passes the message on to a public test service (Postman Echo), waits for its answer and returns that answer to Postman.</li>
+</ol>
+
+<figure class="diagram"><svg viewBox="0 0 780 270" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Integration flow with Postman as sender, a Content Modifier, Request Reply and Postman Echo as receiver"><title>Integration flow with Postman as sender, a Content Modifier, Request Reply and Postman Echo as receiver</title><defs><marker id="mFlow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#0070f3"/></marker></defs><rect x="10" y="75" width="110" height="60" rx="10" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/><text x="65.0" y="101.5" font-size="14" font-weight="700" fill="#172033" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">Postman</text><text x="65.0" y="118.5" font-size="12" font-weight="400" fill="#687282" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">sender</text><line x1="120" y1="105" x2="145" y2="105" stroke="#0070f3" stroke-width="2" marker-end="url(#mFlow)"/><rect x="145" y="85" width="95" height="40" rx="20" fill="#eef6ff" stroke="#0070f3" stroke-width="1.5"/><text x="192.5" y="101.5" font-size="12" font-weight="700" fill="#172033" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">HTTPS</text><text x="192.5" y="118.5" font-size="11" font-weight="400" fill="#172033" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">sender adapter</text><line x1="240" y1="105" x2="262" y2="105" stroke="#0070f3" stroke-width="2" marker-end="url(#mFlow)"/><rect x="262" y="30" width="360" height="150" rx="12" fill="#f0f7ff" stroke="#0070f3" stroke-width="1.5" stroke-dasharray="6 4"/><text x="442" y="54" font-size="14" font-weight="700" fill="#0070f3" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">Integration flow in CPI</text><circle cx="290" cy="110" r="12" fill="#ffffff" stroke="#172033" stroke-width="2"/><rect x="312" y="80" width="90" height="60" rx="10" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/><text x="357.0" y="106.5" font-size="13" font-weight="600" fill="#172033" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">Content</text><text x="357.0" y="123.5" font-size="13" font-weight="600" fill="#172033" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">Modifier</text><rect x="430" y="80" width="90" height="60" rx="10" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/><text x="475.0" y="106.5" font-size="13" font-weight="600" fill="#172033" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">Request</text><text x="475.0" y="123.5" font-size="13" font-weight="600" fill="#172033" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">Reply</text><circle cx="590" cy="110" r="12" fill="#ffffff" stroke="#172033" stroke-width="4"/><line x1="302" y1="110" x2="312" y2="110" stroke="#0070f3" stroke-width="2" marker-end="url(#mFlow)"/><line x1="402" y1="110" x2="430" y2="110" stroke="#0070f3" stroke-width="2" marker-end="url(#mFlow)"/><line x1="520" y1="110" x2="578" y2="110" stroke="#0070f3" stroke-width="2" marker-end="url(#mFlow)"/><line x1="475" y1="140" x2="475" y2="205" stroke="#0070f3" stroke-width="2" marker-end="url(#mFlow)" marker-start="url(#mFlow)"/><rect x="420" y="205" width="110" height="44" rx="20" fill="#eef6ff" stroke="#0070f3" stroke-width="1.5"/><text x="475.0" y="223.5" font-size="12" font-weight="700" fill="#172033" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">HTTP</text><text x="475.0" y="240.5" font-size="11" font-weight="400" fill="#172033" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">receiver adapter</text><line x1="530" y1="227" x2="580" y2="227" stroke="#0070f3" stroke-width="2" marker-end="url(#mFlow)" marker-start="url(#mFlow)"/><rect x="580" y="200" width="180" height="54" rx="10" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/><text x="670.0" y="223.5" font-size="14" font-weight="700" fill="#172033" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">Postman Echo</text><text x="670.0" y="240.5" font-size="12" font-weight="400" fill="#687282" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">test service (receiver)</text><text x="110" y="190" font-size="12" font-weight="600" fill="#687282" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">Part A: sender only</text><text x="110" y="208" font-size="12" font-weight="600" fill="#687282" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">Part B: adds Request Reply and a receiver</text></svg><figcaption>Figure 1: The flow you build in this article.</figcaption></figure>
+
+<p>
+    You need no coding. The goal is to understand what a sender and a receiver really are, how a deployed flow gets its
+    URL and how a calling system proves who it is.
+</p>
+
+
+<h2 id="sender-and-receiver">Sender and Receiver Explained</h2>
+
+<p>
+    The words are always from the point of view of CPI:
+</p>
+
+<div class="table-wrap">
+<table>
+    <thead>
+        <tr><th></th><th>Sender</th><th>Receiver</th></tr>
+    </thead>
+    <tbody>
+        <tr><td><strong>Who is it?</strong></td><td>The system that sends a message <em>to</em> CPI.</td><td>The system that CPI sends a message <em>to</em>, or calls.</td></tr>
+        <tr><td><strong>Adapter</strong></td><td>Sender adapter. It opens an endpoint on CPI, or polls a source.</td><td>Receiver adapter. It makes an outgoing call from CPI.</td></tr>
+        <tr><td><strong>In this article</strong></td><td>Postman, using the <strong>HTTPS</strong> sender adapter.</td><td>Postman Echo, using the <strong>HTTP</strong> receiver adapter.</td></tr>
+        <tr><td><strong>Who authenticates?</strong></td><td>The sender proves its identity to CPI (role, OAuth, certificate).</td><td>CPI proves its identity to the receiver (credentials, certificates).</td></tr>
+    </tbody>
+</table>
+</div>
+
+<p>
+    One system can be both. For example, a payroll system could send employee data to CPI (as sender) and also
+    receive a confirmation from CPI (as receiver).
+</p>
+
+
+<h2 id="prerequisites">Prerequisites</h2>
+
+<ul>
+    <li>SAP Integration Suite with the <strong>Cloud Integration</strong> capability activated. A free trial works.</li>
+    <li>Permission to create integration content and to deploy it. Your BTP administrator assigns role collections for this.</li>
+    <li>A subaccount where you can create a service instance (Cloud Foundry environment with a space).</li>
+    <li>The Postman application, or Postman on the web.</li>
+</ul>
+
+
+<h2 id="service-key">Step 1: Create the Credentials for Postman</h2>
+
+<p>
+    An integration flow with an HTTPS sender is protected. Postman must prove it is allowed to call it. In the Cloud
+    Foundry environment you do this with a service instance of <strong>Process Integration Runtime</strong>, which
+    works like an OAuth client.
+</p>
+
+<ol>
+    <li>In the BTP cockpit, open your subaccount and choose <strong>Instances and Subscriptions</strong>.</li>
+    <li>Choose <strong>Create</strong> and enter: Service <strong>Process Integration Runtime</strong>, Plan <strong>integration-flow</strong>, Runtime Environment <strong>Cloud Foundry</strong>, your <strong>Space</strong>, and any instance name, for example <code>postman-test</code>.</li>
+    <li>On the Parameters screen, keep the defaults. They contain the role <code>ESBMessaging.send</code> and the grant type <code>Client Credentials</code>.</li>
+    <li>Choose <strong>Create</strong>. Then open the instance, choose <strong>Create</strong> under Service Keys, enter a name and keep the default key type (client ID and secret).</li>
+    <li>Open the new service key with <strong>View</strong> and copy these values: <code>clientid</code>, <code>clientsecret</code>, <code>tokenurl</code> and <code>url</code>.</li>
+</ol>
+
+<div class="warning-box">
+    <strong>Treat the client secret like a password</strong>
+    <p>
+        Never put it in an article, a screenshot, a chat or a public repository. In Postman, store it as a
+        variable in an environment instead of typing it into many requests.
+    </p>
+</div>
+
+<p>
+    The role <code>ESBMessaging.send</code> is a predefined SAP role. It allows a sender to send messages to
+    integration flows on the tenant.
+</p>
+
+
+<h2 id="part-a-build">Step 2: Build the Flow (Part A)</h2>
+
+<ol>
+    <li>In Cloud Integration, open <strong>Design → Integrations and APIs</strong>. Create an integration package (for example <code>SAPwithSAI Practice</code>) or open an existing one.</li>
+    <li>On the <strong>Artifacts</strong> tab choose <strong>Add → Integration Flow</strong>, create a new flow, enter a name such as <code>First_iFlow_Postman</code> and open it.</li>
+    <li>Choose <strong>Edit</strong>. A new flow contains a Sender, a Receiver and a start-to-end process. For Part A, <strong>delete the Receiver</strong> shape.</li>
+    <li>Select the <strong>Sender</strong> shape, drag its arrow to the <strong>Start</strong> event of the process, and choose the adapter type <strong>HTTPS</strong>.</li>
+    <li>On the <strong>Connection</strong> tab of the HTTPS adapter set <strong>Address</strong> to <code>/hello</code>. Keep <strong>Authorization</strong> on <em>User Role</em> with role <code>ESBMessaging.send</code>, and <strong>untick CSRF Protected</strong> for this practice flow (see the note below).</li>
+    <li>In the palette choose <strong>Message Transformers → Content Modifier</strong> and drop it on the line between Start and End.</li>
+    <li>In the Content Modifier, open the <strong>Message Body</strong> tab and enter:</li>
+</ol>
+
+<pre><code>You sent: ${in.body}
+Current time (UTC): ${date:now:yyyy-MM-dd HH:mm:ss}</code></pre>
+
+<p>
+    <code>${in.body}</code> and <code>${date:now:...}</code> are Camel Simple expressions. Apache Camel is the open
+    source framework behind Cloud Integration, so the same expressions work in many steps.
+</p>
+
+<div class="info-box">
+    <strong>What is "CSRF Protected"?</strong>
+    <p>
+        CSRF protection defends against forged requests that come from a browser session. When it is on, calls that
+        change data (such as POST) must first fetch a token, otherwise CPI can answer with a 403 error. For a simple
+        test from Postman we switch it off. For real integrations, decide based on how the sender calls CPI and follow
+        your security team's guidance.
+    </p>
+</div>
+
+<ol start="8">
+    <li>Choose <strong>Save</strong>, then <strong>Deploy</strong>, and confirm.</li>
+</ol>
+
+
+<h2 id="endpoint">Step 3: Find the Endpoint URL</h2>
+
+<ol>
+    <li>Open <strong>Monitor → Integrations and APIs</strong> and choose the tile under <strong>Manage Integration Content</strong>.</li>
+    <li>Select your flow. Check that its status is <strong>Started</strong>. If it shows an error, go back to Design and make sure the flow saves without errors.</li>
+    <li>Open the <strong>Endpoints</strong> tab and copy the endpoint address.</li>
+</ol>
+
+<p>
+    The address has this shape. Your host name will differ, so always copy it from the Endpoints tab:
+</p>
+
+<pre><code>https://&lt;your-runtime-host&gt;/http/hello</code></pre>
+
+<p>
+    The part after <code>/http/</code> is exactly the Address you entered in the sender adapter.
+</p>
+
+
+<h2 id="postman-test">Step 4: Call the Flow from Postman</h2>
+
+<ol>
+    <li>In Postman create a new request. Set the method to <strong>POST</strong> and paste the endpoint address.</li>
+    <li>Open the <strong>Authorization</strong> tab and choose <strong>OAuth 2.0</strong>.</li>
+    <li>Set <strong>Add auth data to</strong> to <em>Request Headers</em> and <strong>Grant Type</strong> to <em>Client Credentials</em>.</li>
+    <li>For <strong>Access Token URL</strong> paste the <code>tokenurl</code> from the service key (it ends with <code>/oauth/token</code>). Enter the <code>clientid</code> and <code>clientsecret</code>.</li>
+    <li>Set <strong>Client Authentication</strong> to <em>Send as Basic Auth header</em>. If the token request fails, try <em>Send client credentials in body</em>.</li>
+    <li>Choose <strong>Get New Access Token</strong>, then <strong>Use Token</strong>.</li>
+    <li>Open the <strong>Body</strong> tab, choose <strong>raw → Text</strong> and type <code>Hello CPI</code>.</li>
+    <li>Choose <strong>Send</strong>.</li>
+</ol>
+
+<p>
+    What happens behind the scenes: the first call goes to the token server, which checks your client ID and secret
+    and returns an access token. The second call goes to your flow with that token in the header. CPI checks the token
+    and the role, then runs the flow.
+</p>
+
+<p>The response should look like this (your time will differ):</p>
+
+<pre><code>You sent: Hello CPI
+Current time (UTC): 2026-11-14 10:15:30</code></pre>
+
+<div class="info-box">
+    <strong>Alternative: basic authentication</strong>
+    <p>
+        SAP's training material also describes calling the endpoint with basic authentication, using the
+        <code>clientid</code> as user name and the <code>clientsecret</code> as password. If that gives a 401 error on your
+        tenant, use the OAuth method above, which is the documented route.
+    </p>
+</div>
+
+<p>
+    Congratulations: you have built a flow with a <strong>sender only</strong>. Postman was the sender, and the
+    answer simply travelled back on the same connection.
+</p>
+
+
+<h2 id="part-b-receiver">Step 5: Add a Receiver (Part B)</h2>
+
+<p>
+    Now CPI will call another system. We use <strong>Postman Echo</strong>, a public test service that returns
+    whatever it receives.
+</p>
+
+<ol>
+    <li>Open the flow and choose <strong>Edit</strong>.</li>
+    <li>In the palette choose <strong>Call → External Call → Request Reply</strong> and place it on the line between the Content Modifier and the End event.</li>
+    <li>From <strong>Participants</strong> add a <strong>Receiver</strong> and place it below or to the right of the process.</li>
+    <li>Draw a line from the <strong>Request Reply</strong> step to the new Receiver and choose the adapter type <strong>HTTP</strong>.</li>
+    <li>On the Connection tab of the HTTP adapter set <strong>Address</strong> to <code>https://postman-echo.com/post</code>, <strong>Method</strong> to <code>POST</code> and <strong>Authentication</strong> to <em>None</em>.</li>
+    <li><strong>Save</strong> and <strong>Deploy</strong> again. A changed flow only runs after redeployment.</li>
+    <li>Send the same request from Postman.</li>
+</ol>
+
+<p>
+    This time Postman receives a JSON answer from Postman Echo. Look for the text <code>You sent: Hello CPI</code> in the
+    answer, normally in a field such as <code>data</code>. That proves the whole round trip:
+</p>
+
+<p>
+    Postman → CPI (HTTPS sender) → Content Modifier → Request Reply → Postman Echo (HTTP receiver) → back through CPI → Postman.
+</p>
+
+<div class="table-wrap">
+<table>
+    <thead>
+        <tr><th>Step</th><th>Behaviour</th><th>When to use</th></tr>
+    </thead>
+    <tbody>
+        <tr><td><strong>Request Reply</strong></td><td>Calls the receiver and <em>waits</em>. The receiver's answer becomes the new message body.</td><td>You need the response, for example data from an API.</td></tr>
+        <tr><td><strong>Send</strong></td><td>Sends the message and continues without waiting for an answer.</td><td>One-way delivery where no answer is needed.</td></tr>
+    </tbody>
+</table>
+</div>
+
+<div class="warning-box">
+    <strong>Never send real data to a public test service</strong>
+    <p>
+        Postman Echo is for learning only. Use made-up text. Never send employee, customer or any confidential data to a
+        public service.
+    </p>
+</div>
+
+
+<h2 id="check-the-logs">Step 6: Check the Message Processing Log</h2>
+
+<ol>
+    <li>Open <strong>Monitor → Integrations and APIs → Monitor Message Processing</strong>.</li>
+    <li>Find your flow by name. The list shows the status, the processing time and the message ID.</li>
+    <li>Select the message and open the <strong>Logs</strong> section. Use <strong>Open Text View</strong> for a plain text version of the log.</li>
+</ol>
+
+<p>
+    For more detail, go to Manage Integration Content, select your flow and raise the log level to Debug or Trace for a
+    short test. In the graphical view of the log you can then follow the message step by step. Set the level back
+    afterwards.
+</p>
+
+
+<h2 id="common-errors">Common Errors and What They Usually Mean</h2>
+
+<div class="table-wrap">
+<table>
+    <thead>
+        <tr><th>You see</th><th>Usual cause</th><th>What to check</th></tr>
+    </thead>
+    <tbody>
+        <tr><td><strong>401 Unauthorized</strong></td><td>Wrong or expired credentials.</td><td>Client ID, secret, token URL, and that the token is added to the request header.</td></tr>
+        <tr><td><strong>403 Forbidden</strong></td><td>The caller is missing the role, or the CSRF check failed.</td><td>The service instance has role <code>ESBMessaging.send</code>; the sender adapter uses the same role; CSRF Protected is off for POST tests.</td></tr>
+        <tr><td><strong>404 Not Found</strong></td><td>Flow not deployed, or wrong URL.</td><td>Status is <em>Started</em>; the path matches <code>/http/&lt;address&gt;</code> exactly, including upper and lower case.</td></tr>
+        <tr><td><strong>500 Internal Server Error</strong></td><td>The flow failed while processing.</td><td>Open the message in Monitor Message Processing and read the error in the log.</td></tr>
+        <tr><td><strong>SSL or handshake error to the receiver</strong></td><td>CPI does not trust the receiver's certificate.</td><td>Certificates in the <em>Keystore</em>; try the connectivity test if available.</td></tr>
+        <tr><td><strong>Old behaviour after a change</strong></td><td>The new version was not deployed.</td><td>Save and deploy again, then check the deployment status.</td></tr>
+    </tbody>
+</table>
+</div>
+
+
+<h2 id="interview-questions">Interview Questions</h2>
+
+<h3>1. What is the difference between a sender and a receiver in CPI?</h3>
+<p>
+    The sender sends a message to CPI through a sender adapter. The receiver is the system that CPI sends a message to
+    or calls through a receiver adapter. The terms always describe the direction as seen from CPI.
+</p>
+
+<h3>2. What is the role <code>ESBMessaging.send</code>?</h3>
+<p>
+    It is the predefined role that allows a calling system to send messages to integration flows on the tenant. It is
+    assigned to the service instance or user that calls the flow.
+</p>
+
+<h3>3. What is the difference between the HTTPS and the HTTP adapter?</h3>
+<p>
+    The HTTPS adapter is a sender adapter. It creates an endpoint that other systems call. The HTTP adapter is a
+    receiver adapter. CPI uses it to call another HTTP service.
+</p>
+
+<h3>4. What is the difference between Request Reply and Send?</h3>
+<p>
+    Request Reply is synchronous: it waits for the answer and uses it as the new message. Send does not wait for any
+    answer.
+</p>
+
+<h3>5. Why must you redeploy after changing a flow?</h3>
+<p>
+    Saving only stores the design. The running version on the tenant changes only when you deploy again.
+</p>
+
+
+<h2 id="faqs">Frequently Asked Questions</h2>
+
+<h3>Do I always need Postman?</h3>
+<p>
+    No. Postman is a convenient way to act as a sender while learning. In real projects the sender is a real system, such
+    as an application or a scheduler.
+</p>
+
+<h3>Where does the endpoint URL come from?</h3>
+<p>
+    After deployment, CPI generates it from the runtime host and the address of the sender adapter. You find it on the
+    Endpoints tab under Manage Integration Content.
+</p>
+
+<h3>Can a flow have more than one receiver?</h3>
+<p>
+    Yes. You can add several receivers and use routing steps such as Router or Multicast to decide which one gets the
+    message.
+</p>
+
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>
+    You created credentials, built a flow with an HTTPS sender, added a receiver with Request Reply and tested everything
+    from Postman. You also know where to look when something goes wrong. In the next article you protect a message
+    with encryption and decryption inside CPI.
+</p>
+
+<div class="series-box"><strong>SAP CPI Beginner Series</strong><ol><li><a href="sap-btp-and-cpi-basics-palette-adapters-cockpit.html">1. SAP BTP and CPI basics: palette, adapters and the cockpit</a></li><li><a href="why-sap-cpi-is-used-use-cases-and-real-world-examples.html">2. Why SAP CPI is used: use cases and real-world examples</a></li><li class="current"><span>3. Your first SAP CPI integration flow with Postman</span> (you are here)</li><li><a href="sap-cpi-encryption-decryption-pkcs7-postman.html">4. SAP CPI encryption and decryption with Postman</a></li></ol><p class="series-next">Next: <a href="sap-cpi-encryption-decryption-pkcs7-postman.html">SAP CPI Encryption and Decryption in a Simple Flow (Using Postman)</a></p></div>
+
+
+            <div class="author-box">
+
+                <strong>
+                    SAPwithSAI
+                </strong>
+
+                <p>
+                    Practical SAP SuccessFactors Employee Central and
+                    SAP CPI learning for consultants.
+                </p>
+
+            </div>
+
+        </div>
+
+    </article>
+
+</main>
+
+<!-- Footer -->
+
+<footer>
+
+    <div class="footer-content">
+
+        <div>
+
+            <div class="logo">
+                SAPwith<span>SAI</span>
+            </div>
+
+            <p>
+                Learn SAP. Build your expertise.
+            </p>
+
+        </div>
+
+        <div>
+
+            <p>
+                © 2026 SAPwithSAI. All rights reserved.
+            </p>
+
+        </div>
+
+    </div>
+
+    <p class="footer-disclaimer">
+        SAPwithSAI is an independent learning site and is not affiliated with or
+        endorsed by SAP SE. SAP and SAP SuccessFactors are trademarks or
+        registered trademarks of SAP SE.
+    </p>
+
+</footer>
+
+<button
+    class="back-to-top"
+    id="back-to-top"
+    aria-label="Back to top">
+
+    ↑
+
+</button>
+
+<script>
+
+    const progressBar = document.getElementById("reading-progress");
+    const backToTop = document.getElementById("back-to-top");
+
+    window.addEventListener("scroll", function () {
+
+        const scrollTop = window.scrollY;
+        const documentHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = (scrollTop / documentHeight) * 100;
+
+        progressBar.style.width = progress + "%";
+
+        if (scrollTop > 500) {
+            backToTop.classList.add("show");
+        } else {
+            backToTop.classList.remove("show");
+        }
+
+    });
+
+    backToTop.addEventListener("click", function () {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+</script>
+
+<script>
+
+    const menuToggle = document.getElementById("menu-toggle");
+    const navLinks = document.querySelector(".nav-links");
+
+    if (menuToggle && navLinks) {
+
+        menuToggle.addEventListener("click", function () {
+            navLinks.classList.toggle("active");
+        });
+
+        navLinks.querySelectorAll("a").forEach(link => {
+            link.addEventListener("click", function () {
+                navLinks.classList.remove("active");
+            });
+        });
+
+    }
+
+</script>
+
+</body>
+
+</html>

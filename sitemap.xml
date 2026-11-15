@@ -50,4 +50,24 @@
     <priority>0.8</priority>
 </url>
 
+    <url>
+        <loc>https://sapwithsai.github.io/articles/sap-cpi/sap-btp-and-cpi-basics-palette-adapters-cockpit.html</loc>
+        <lastmod>2026-11-15</lastmod>
+    </url>
+
+    <url>
+        <loc>https://sapwithsai.github.io/articles/sap-cpi/why-sap-cpi-is-used-use-cases-and-real-world-examples.html</loc>
+        <lastmod>2026-11-15</lastmod>
+    </url>
+
+    <url>
+        <loc>https://sapwithsai.github.io/articles/sap-cpi/first-cpi-integration-flow-sender-receiver-postman.html</loc>
+        <lastmod>2026-11-15</lastmod>
+    </url>
+
+    <url>
+        <loc>https://sapwithsai.github.io/articles/sap-cpi/sap-cpi-encryption-decryption-pkcs7-postman.html</loc>
+        <lastmod>2026-11-15</lastmod>
+    </url>
+
 </urlset>

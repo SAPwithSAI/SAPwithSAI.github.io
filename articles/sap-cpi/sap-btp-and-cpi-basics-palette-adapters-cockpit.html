@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        SAP BTP and SAP CPI Basics: Palette, Adapters and Every Option in the Cockpit | SAPwithSAI
+    </title>
+    <meta name="description"
+          content="A beginner-friendly tour of SAP BTP and SAP CPI: how BTP is organised, every area of the cockpit, the integration flow palette and the main adapters.">
+    <meta name="author" content="SAPwithSAI">
+    <meta name="robots" content="index, follow">
+    <link
+    rel="canonical"
+    href="https://sapwithsai.github.io/articles/sap-cpi/sap-btp-and-cpi-basics-palette-adapters-cockpit.html"
+>
+<!-- Open Graph -->
+    <meta
+        property="og:title"
+        content="SAP BTP and SAP CPI Basics: Palette, Adapters and Every Option in the Cockpit | SAPwithSAI"
+    >
+    <meta
+        property="og:description"
+        content="A beginner-friendly tour of SAP BTP and SAP CPI: how BTP is organised, every area of the cockpit, the integration flow palette and the main adapters."
+    >
+    <meta
+        property="og:type"
+        content="article"
+    >
+    <meta
+        property="og:site_name"
+        content="SAPwithSAI"
+    >
+<meta
+    property="og:url"
+    content="https://sapwithsai.github.io/articles/sap-cpi/sap-btp-and-cpi-basics-palette-adapters-cockpit.html"
+>
+    <link rel="stylesheet" href="../../style.css">
+    <!-- Article Schema -->
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "SAP BTP and SAP CPI Basics: Palette, Adapters and Every Option in the Cockpit",
+    "description": "A beginner-friendly tour of SAP BTP and SAP CPI: how BTP is organised, every area of the cockpit, the integration flow palette and the main adapters.",
+    "author": {
+        "@type": "Organization",
+        "name": "SAPwithSAI"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "SAPwithSAI"
+    },
+    "datePublished": "2026-11-15",
+    "dateModified": "2026-11-15",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://sapwithsai.github.io/articles/sap-cpi/sap-btp-and-cpi-basics-palette-adapters-cockpit.html"
+    }
+}
+</script>
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+    <link rel="apple-touch-icon" href="/assets/favicon/apple-touch-icon.png">
+    <!-- Social sharing image -->
+    <meta property="og:image" content="https://sapwithsai.github.io/assets/images/sapwithsai-community.png">
+    <meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<div class="reading-progress" id="reading-progress"></div>
+
+<!-- Navigation -->
+
+<header>
+
+    <nav class="navbar">
+
+        <div class="logo">
+            SAPwith<span>SAI</span>
+        </div>
+
+        <button
+            class="menu-toggle"
+            id="menu-toggle"
+            aria-label="Open navigation">
+            ☰
+        </button>
+
+        <div class="nav-links">
+
+            <a href="../../index.html">
+                Home
+            </a>
+
+            <a href="../../blog.html">
+                Blog
+            </a>
+
+            <a href="../../employee-central.html">
+                Employee Central
+            </a>
+
+            <a href="../../cpi.html">
+                SAP CPI
+            </a>
+
+            <a href="../../interview-prep.html">
+                Interview Prep
+            </a>
+
+            <a href="../../about.html">
+                About
+            </a>
+
+        </div>
+
+    </nav>
+
+</header>
+
+<!-- Article -->
+
+<main>
+
+    <article class="blog-article">
+
+        <!-- Breadcrumb -->
+
+        <div class="breadcrumb">
+
+            <a href="../../index.html">
+                Home
+            </a>
+
+            <span> / </span>
+
+            <a href="../../cpi.html">
+                SAP CPI
+            </a>
+
+            <span> / </span>
+
+            <span>
+                SAP BTP and CPI Basics
+            </span>
+
+        </div>
+
+        <!-- Article Header -->
+
+        <header class="article-header">
+
+            <div class="article-category">
+                SAP CPI
+            </div>
+
+            <h1>
+                SAP BTP and SAP CPI Basics: Palette, Adapters and Every Option in the Cockpit
+            </h1>
+
+            <p class="article-intro">
+                A beginner-friendly tour of SAP BTP and SAP Cloud Integration: how BTP is organised, every area of the cockpit, the integration flow palette and the adapters you will use most.
+            </p>
+
+            <div class="article-meta">
+
+                <span>
+                    By SAPwithSAI
+                </span>
+
+                <span>•</span>
+
+                <span>
+                    November 2026
+                </span>
+
+                <span>•</span>
+
+                <span>
+                    13 min read
+                </span>
+
+            </div>
+
+        </header>
+
+        <!-- Table of Contents -->
+
+        <div class="table-of-contents">
+
+            <h3>
+                In this article
+            </h3>
+
+            <ul>
+                <li><a href="#what-is-sap-btp">What Is SAP BTP?</a></li><li><a href="#sap-integration-suite-and-cpi">SAP Integration Suite and Where CPI Fits</a></li><li><a href="#open-the-cockpit">How to Open SAP CPI From the BTP Cockpit</a></li><li><a href="#cockpit-options">Every Area of the Cloud Integration Cockpit</a></li><li><a href="#inside-an-integration-flow">Inside an Integration Flow</a></li><li><a href="#the-palette">The Palette: Every Step Group</a></li><li><a href="#adapters">Adapters: How CPI Connects to Other Systems</a></li><li><a href="#a-messages-journey">A Message's Journey Through CPI</a></li><li><a href="#interview-questions">Interview Questions</a></li><li><a href="#faqs">Frequently Asked Questions</a></li><li><a href="#conclusion">Conclusion</a></li>
+            </ul>
+
+        </div>
+
+        <!-- Article Content -->
+
+        <div class="article-content">
+
+<h2 id="what-is-sap-btp">What Is SAP BTP?</h2>
+
+<p>
+    SAP Business Technology Platform (SAP BTP) is SAP's cloud platform. It brings services for
+    integration, data and analytics, application development and automation into one place.
+    You do not install SAP CPI on a server. You subscribe to it as a service on SAP BTP, and SAP
+    runs it for you.
+</p>
+
+<p>
+    To feel comfortable in the cockpit, you only need to understand how BTP is organised:
+</p>
+
+<ul>
+    <li><strong>Global account</strong> – the top level. It is created when your company contracts SAP BTP, or when you start a trial. It contains your subaccounts.</li>
+    <li><strong>Subaccount</strong> – where the real work happens. Each subaccount sits in one region on one cloud provider. You subscribe to applications, create service instances and manage users here.</li>
+    <li><strong>Entitlements</strong> – what your global account is allowed to use. A service must be entitled to a subaccount before you can use it there.</li>
+    <li><strong>Subscriptions and instances</strong> – what you actually use. Software-as-a-service applications such as SAP Integration Suite appear as <em>subscriptions</em>. Services that other tools call appear as <em>service instances</em>, and each instance can have <em>service keys</em> (credentials).</li>
+    <li><strong>Environments</strong> – for example Cloud Foundry, which groups instances into orgs and spaces. On a current tenant, SAP Cloud Integration typically runs with the Cloud Foundry environment.</li>
+</ul>
+
+<figure class="diagram"><svg viewBox="0 0 780 330" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="SAP BTP structure: global account, subaccount, subscriptions, Cloud Foundry environment and security"><title>SAP BTP structure: global account, subaccount, subscriptions, Cloud Foundry environment and security</title><defs><marker id="mBtp" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#0070f3"/></marker></defs><rect x="10" y="10" width="760" height="310" rx="14" fill="#f8fafc" stroke="#64748b" stroke-width="1.5"/><text x="28" y="38" font-size="16" font-weight="700" fill="#172033" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">Global account</text><text x="150" y="38" font-size="13" font-weight="400" fill="#687282" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">your company's SAP BTP contract (or your trial)</text><rect x="30" y="62" width="720" height="240" rx="12" fill="#ffffff" stroke="#0070f3" stroke-width="1.5"/><text x="48" y="90" font-size="15" font-weight="700" fill="#0070f3" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">Subaccount</text><text x="150" y="90" font-size="13" font-weight="400" fill="#687282" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">one region, one cloud provider</text><rect x="48" y="112" width="214" height="170" rx="10" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5"/><text x="155.0" y="176.5" font-size="14" font-weight="700" fill="#172033" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">Subscriptions</text><text x="155.0" y="193.5" font-size="13" font-weight="400" fill="#687282" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">SAP Integration Suite</text><text x="155.0" y="210.5" font-size="13" font-weight="400" fill="#687282" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">(an application you open</text><text x="155.0" y="227.5" font-size="13" font-weight="400" fill="#687282" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">with “Go to Application”)</text><rect x="282" y="112" width="214" height="170" rx="10" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5"/><text x="389.0" y="168.0" font-size="14" font-weight="700" fill="#172033" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">Cloud Foundry environment</text><text x="389.0" y="185.0" font-size="13" font-weight="400" fill="#687282" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">Org → Space</text><text x="389.0" y="202.0" font-size="13" font-weight="400" fill="#687282" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">Service instances, for example</text><text x="389.0" y="219.0" font-size="13" font-weight="400" fill="#687282" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">Process Integration Runtime</text><text x="389.0" y="236.0" font-size="13" font-weight="400" fill="#687282" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">with service keys (credentials)</text><rect x="516" y="112" width="214" height="170" rx="10" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5"/><text x="623.0" y="176.5" font-size="14" font-weight="700" fill="#172033" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">Security</text><text x="623.0" y="193.5" font-size="13" font-weight="400" fill="#687282" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">Users and role collections</text><text x="623.0" y="210.5" font-size="13" font-weight="400" fill="#687282" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">decide who may design,</text><text x="623.0" y="227.5" font-size="13" font-weight="400" fill="#687282" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">deploy and monitor</text></svg><figcaption>Figure 1: How SAP BTP is organised, and where Integration Suite sits.</figcaption></figure>
+
+<div class="info-box">
+    <strong>Consultant Tip</strong>
+    <p>
+        You will use the <em>Instances and Subscriptions</em> page of the subaccount again and again.
+        It is where you open Integration Suite, and also where you create the service instance and key
+        that Postman needs to call your integration flows (we do this in article 3).
+    </p>
+</div>
+
+
+<h2 id="sap-integration-suite-and-cpi">SAP Integration Suite and Where CPI Fits</h2>
+
+<p>
+    "CPI" stands for Cloud Platform Integration. The product started as SAP HANA Cloud Integration,
+    became SAP Cloud Platform Integration, and is now delivered as the <strong>Cloud Integration</strong>
+    capability of <strong>SAP Integration Suite</strong>. Everybody still says "CPI", and you will meet
+    all of these names in blogs, job descriptions and interviews.
+</p>
+
+<p>
+    SAP Integration Suite bundles several capabilities. The tiles you see on its home page depend on
+    what has been activated for your tenant.
+</p>
+
+<div class="table-wrap">
+<table>
+    <thead>
+        <tr><th>Capability</th><th>What it is for</th></tr>
+    </thead>
+    <tbody>
+        <tr><td><strong>Cloud Integration</strong></td><td>Build, run and monitor integration flows that connect cloud and on-premise systems. This is what this series covers.</td></tr>
+        <tr><td><strong>API Management</strong></td><td>Design, secure, publish, monitor and retire APIs, with policies for authentication and traffic control.</td></tr>
+        <tr><td><strong>Open Connectors</strong></td><td>Prebuilt connectors for many third-party cloud applications.</td></tr>
+        <tr><td><strong>Integration Advisor</strong></td><td>Helps design B2B and industry-standard message interfaces and mappings, using a knowledge base and machine learning.</td></tr>
+        <tr><td><strong>Trading Partner Management</strong></td><td>Manage partner profiles, agreements and communication settings for B2B scenarios.</td></tr>
+        <tr><td><strong>Event Mesh</strong></td><td>Publish and consume business events for event-driven scenarios.</td></tr>
+        <tr><td><strong>Integration Assessment</strong></td><td>Helps decide which integration technology and pattern fits a requirement.</td></tr>
+        <tr><td><strong>Migration Assessment</strong></td><td>Estimates the effort to move SAP Process Orchestration scenarios to Integration Suite. It does not perform the migration itself.</td></tr>
+        <tr><td><strong>OData Provisioning</strong></td><td>Publishes OData services so business data is easy to consume.</td></tr>
+        <tr><td><strong>Graph</strong></td><td>Lets applications work with business data from several SAP solutions through one data model.</td></tr>
+    </tbody>
+</table>
+</div>
+
+<p>
+    SAP adds and renames capabilities over time, so always compare this list with your own home page.
+    When a job advert says "CPI", it almost always means the Cloud Integration capability.
+</p>
+
+
+<h2 id="open-the-cockpit">How to Open SAP CPI From the BTP Cockpit</h2>
+
+<ol>
+    <li>Log in to the SAP BTP cockpit and open your global account, then your subaccount.</li>
+    <li>In the left menu choose <strong>Instances and Subscriptions</strong>.</li>
+    <li>Under <strong>Subscriptions</strong>, find <strong>Integration Suite</strong> and choose <strong>Go to Application</strong>.</li>
+    <li>On the Integration Suite home page, look at the <strong>Capabilities</strong> tiles and open <strong>Cloud Integration</strong>.</li>
+</ol>
+
+<p>
+    If you cannot see Integration Suite, either it is not subscribed in that subaccount or your user is
+    missing role collections, which your BTP administrator assigns. To practise, SAP offers a free trial
+    account, and its tutorials explain how to enable Cloud Integration there.
+</p>
+
+
+<h2 id="cockpit-options">Every Area of the Cloud Integration Cockpit</h2>
+
+<p>
+    The left-hand menu of Cloud Integration has four main areas: <strong>Discover</strong>,
+    <strong>Design</strong>, <strong>Monitor</strong> and <strong>Settings</strong>. SAP changes names and
+    adds entries between releases, so treat this section as a map rather than a promise.
+</p>
+
+<h3>Discover – ready-made content</h3>
+<p>
+    Discover lists prebuilt integration packages from SAP and partners, for example for SuccessFactors,
+    S/4HANA or Ariba. You copy a package into your own workspace and configure it, instead of building
+    everything from nothing. Always check how recent a package is before you use it in a project.
+</p>
+
+<h3>Design – where you build</h3>
+<ul>
+    <li><strong>Integration package</strong> – a container that groups related artifacts. You create it under <em>Design → Integrations and APIs</em>.</li>
+    <li><strong>Artifacts tab</strong> – lists everything inside the package. Choose <em>Add</em> to create an <strong>Integration Flow</strong>, a <strong>Value Mapping</strong>, an API artifact (OData, REST or SOAP) or a <strong>Script Collection</strong> for shared scripts.</li>
+    <li><strong>Edit, Save, Deploy</strong> – you edit a flow in the graphical editor, save a version, then deploy it so it runs on the tenant.</li>
+    <li><strong>Configure</strong> – lets you change externalised parameters (such as URLs and credential names) without editing the flow. This is how the same flow moves from test to production.</li>
+</ul>
+
+<h3>Monitor – where you operate and troubleshoot</h3>
+
+<div class="table-wrap">
+<table>
+    <thead>
+        <tr><th>Tile</th><th>What you do with it</th></tr>
+    </thead>
+    <tbody>
+        <tr><td><strong>Monitor Message Processing</strong></td><td>See every message processed on the tenant, with its status (for example Completed, Processing, Retry, Escalated, Failed, Abandoned), and open its processing log.</td></tr>
+        <tr><td><strong>Manage Integration Content</strong></td><td>See deployed integration flows and APIs, their status and endpoint URLs. Change the log level, download or undeploy.</td></tr>
+        <tr><td><strong>Security Material</strong></td><td>Deploy security artifacts that flows need, such as user credentials, OAuth2 client credentials and PGP keyrings.</td></tr>
+        <tr><td><strong>Keystore</strong></td><td>Manage the tenant keystore: key pairs and certificates used for certificate-based security. Check validity dates here.</td></tr>
+        <tr><td><strong>Connectivity Tests</strong></td><td>Test outbound connections from your tenant to a receiver system (availability can depend on your release and environment).</td></tr>
+        <tr><td><strong>Access Policies, User Roles, JDBC Material</strong></td><td>Restrict access to artifacts, define your own roles for sender authorisation, and define database connections for the JDBC adapter. Exact tiles vary by release.</td></tr>
+        <tr><td><strong>Data Stores</strong></td><td>Temporary data that flows save with the Data Store Operations step.</td></tr>
+        <tr><td><strong>Variables</strong></td><td>Values that flows keep between runs (for example a "last run time").</td></tr>
+        <tr><td><strong>Message Queues</strong></td><td>JMS queues for asynchronous, reliable processing.</td></tr>
+        <tr><td><strong>Number Ranges</strong></td><td>Unique sequence numbers, mainly used in EDI and B2B scenarios.</td></tr>
+        <tr><td><strong>Access Logs</strong></td><td>Review access to tenant resources, which helps with security and compliance.</td></tr>
+        <tr><td><strong>Manage Locks</strong></td><td>See and release message locks that stop the same message from being processed twice at the same time.</td></tr>
+    </tbody>
+</table>
+</div>
+
+<div class="warning-box">
+    <strong>Log levels</strong>
+    <p>
+        Each deployed flow has a log level. <em>Info</em> is enough for daily operation. <em>Debug</em> and
+        <em>Trace</em> show far more detail and can capture message content, so use them only for short
+        troubleshooting sessions and never leave them on for sensitive production data.
+    </p>
+</div>
+
+<h3>Settings – tenant-level configuration</h3>
+<p>
+    Settings holds tenant-wide configuration. The entries depend on your role and release, so open it once
+    in your own tenant to see what is available to you.
+</p>
+
+
+<h2 id="inside-an-integration-flow">Inside an Integration Flow</h2>
+
+<p>
+    An integration flow (iFlow) is a visual pipeline. A message enters through a sender channel, passes
+    through processing steps and leaves through a receiver channel. Three words matter:
+</p>
+
+<ul>
+    <li><strong>Sender</strong> – the system that sends a message <em>to</em> CPI. The connection is called the sender channel and uses a sender adapter.</li>
+    <li><strong>Integration Process</strong> – the processing area in the middle, where steps change, route or enrich the message.</li>
+    <li><strong>Receiver</strong> – a system that CPI sends a message <em>to</em> or calls. The connection is a receiver channel with a receiver adapter.</li>
+</ul>
+
+<figure class="diagram"><svg viewBox="0 0 820 225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Message path in an integration flow from sender through the integration process to the receiver"><title>Message path in an integration flow from sender through the integration process to the receiver</title><defs><marker id="mPath" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#0070f3"/></marker></defs><rect x="10" y="70" width="100" height="70" rx="10" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/><text x="60.0" y="101.5" font-size="14" font-weight="700" fill="#172033" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">Sender</text><text x="60.0" y="118.5" font-size="12" font-weight="400" fill="#687282" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">source system</text><line x1="110" y1="105" x2="140" y2="105" stroke="#0070f3" stroke-width="2" marker-end="url(#mPath)"/><rect x="140" y="85" width="90" height="40" rx="20" fill="#eef6ff" stroke="#0070f3" stroke-width="1.5"/><text x="185.0" y="101.5" font-size="12" font-weight="700" fill="#172033" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">Sender</text><text x="185.0" y="118.5" font-size="12" font-weight="700" fill="#172033" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">adapter</text><line x1="230" y1="105" x2="260" y2="105" stroke="#0070f3" stroke-width="2" marker-end="url(#mPath)"/><rect x="260" y="30" width="310" height="150" rx="12" fill="#f0f7ff" stroke="#0070f3" stroke-width="1.5" stroke-dasharray="6 4"/><text x="415" y="56" font-size="14" font-weight="700" fill="#0070f3" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">Integration Process</text><rect x="272" y="80" width="88" height="60" rx="10" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/><text x="316.0" y="106.5" font-size="13" font-weight="600" fill="#172033" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">Content</text><text x="316.0" y="123.5" font-size="13" font-weight="600" fill="#172033" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">Modifier</text><rect x="372" y="80" width="88" height="60" rx="10" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/><text x="416.0" y="115.0" font-size="13" font-weight="600" fill="#172033" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">Mapping</text><rect x="472" y="80" width="88" height="60" rx="10" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/><text x="516.0" y="115.0" font-size="13" font-weight="600" fill="#172033" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">Router</text><line x1="360" y1="110" x2="372" y2="110" stroke="#0070f3" stroke-width="2" marker-end="url(#mPath)"/><line x1="460" y1="110" x2="472" y2="110" stroke="#0070f3" stroke-width="2" marker-end="url(#mPath)"/><text x="415" y="165" font-size="12" font-weight="400" fill="#687282" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">steps change, route or enrich the message</text><line x1="570" y1="105" x2="600" y2="105" stroke="#0070f3" stroke-width="2" marker-end="url(#mPath)"/><rect x="600" y="85" width="90" height="40" rx="20" fill="#eef6ff" stroke="#0070f3" stroke-width="1.5"/><text x="645.0" y="101.5" font-size="12" font-weight="700" fill="#172033" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">Receiver</text><text x="645.0" y="118.5" font-size="12" font-weight="700" fill="#172033" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">adapter</text><line x1="690" y1="105" x2="720" y2="105" stroke="#0070f3" stroke-width="2" marker-end="url(#mPath)"/><rect x="720" y="70" width="90" height="70" rx="10" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/><text x="765.0" y="101.5" font-size="14" font-weight="700" fill="#172033" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">Receiver</text><text x="765.0" y="118.5" font-size="12" font-weight="400" fill="#687282" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">target system</text><text x="410" y="208" font-size="13" font-weight="600" fill="#172033" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">A message = body + headers + properties (+ attachments)</text></svg><figcaption>Figure 2: Sender, adapters, integration process and receiver.</figcaption></figure>
+
+<p>While a message is processed it has four parts that you will meet in almost every step:</p>
+
+<ul>
+    <li><strong>Body (payload)</strong> – the content itself, for example XML or JSON.</li>
+    <li><strong>Headers</strong> – key and value pairs that travel with the message. Adapters can pass allowed headers on to the receiver.</li>
+    <li><strong>Properties</strong> – key and value pairs that exist only while the message is processed inside CPI. The receiver never sees them.</li>
+    <li><strong>Attachments</strong> – extra content attached to the message. Used less often.</li>
+</ul>
+
+<p>
+    SAP Cloud Integration is built on Apache Camel, which is why expressions such as
+    <code>${header.OrderID}</code> or <code>${property.Counter}</code> (Camel Simple language) appear in steps.
+</p>
+
+
+<h2 id="the-palette">The Palette: Every Step Group</h2>
+
+<p>
+    When you edit a flow, the palette above the model lists the building blocks. Each icon opens a group of steps.
+</p>
+
+<div class="table-wrap">
+<table>
+    <thead>
+        <tr><th>Palette group</th><th>Steps inside</th><th>Used for</th></tr>
+    </thead>
+    <tbody>
+        <tr><td><strong>Participants</strong></td><td>Sender, Receiver</td><td>Represent the external systems your flow talks to.</td></tr>
+        <tr><td><strong>Process</strong></td><td>Integration Process, Local Integration Process, Exception Subprocess</td><td>The main flow, reusable sub-flows and error handling.</td></tr>
+        <tr><td><strong>Events</strong></td><td>Start Message, Timer Start, Error Start, End Message, Error End, Escalation End, Terminate Message</td><td>Where a flow starts and ends, scheduling, and ending a flow on purpose.</td></tr>
+        <tr><td><strong>Mapping</strong></td><td>Message Mapping, XSLT Mapping (plus ID Mapping and Operation Mapping for special cases)</td><td>Convert one structure into another.</td></tr>
+        <tr><td><strong>Message Transformers</strong></td><td>Content Modifier, Converter, Decoder, Encoder, Filter, Message Digest, Script, XML Modifier</td><td>Change the body, headers and properties; convert formats; run Groovy or JavaScript.</td></tr>
+        <tr><td><strong>Call</strong></td><td>External Call (Request Reply, Content Enricher, Poll Enrich, Send) and Local Call (Process Call)</td><td>Call other systems or sub-processes.</td></tr>
+        <tr><td><strong>Message Routing</strong></td><td>Router, Multicast, Splitter, Join, Gather, Aggregator</td><td>Choose paths, send to several receivers, split and merge messages.</td></tr>
+        <tr><td><strong>Security Elements</strong></td><td>Encryptor, Decryptor, Signer, Verifier</td><td>Encrypt, decrypt, sign and verify messages.</td></tr>
+        <tr><td><strong>Persistence</strong></td><td>Data Store Operations, Persist Message, Write Variables</td><td>Keep data between steps or between runs.</td></tr>
+        <tr><td><strong>Message Validators</strong></td><td>XML Validator</td><td>Check that XML follows a schema.</td></tr>
+    </tbody>
+</table>
+</div>
+
+<p>
+    Besides the groups, the palette has tools to copy and paste, delete, draw connections, search for a step,
+    and run a simulation to test the flow. These are the steps you will use first:
+</p>
+
+<ul>
+    <li><strong>Content Modifier</strong> – set or change the body, headers and properties. You will use it in almost every flow.</li>
+    <li><strong>Converter</strong> – convert between CSV, JSON, XML and EDI formats.</li>
+    <li><strong>Encoder and Decoder</strong> – Base64, GZIP, ZIP and MIME multipart.</li>
+    <li><strong>Script</strong> – Groovy or JavaScript for logic standard steps cannot do. Try standard steps first.</li>
+    <li><strong>Router</strong> – send the message down different paths based on conditions, like if / else.</li>
+    <li><strong>Splitter, Gather, Aggregator</strong> – break one large message into many, and join results back together.</li>
+    <li><strong>Multicast</strong> – send the same message to several branches, in parallel or in sequence.</li>
+    <li><strong>Request Reply</strong> – call a receiver and wait for its answer.</li>
+    <li><strong>Send</strong> – send a message and carry on without waiting for an answer.</li>
+    <li><strong>Content Enricher</strong> – call a service and merge its answer into the current message.</li>
+    <li><strong>Data Store Operations and Write Variables</strong> – save data for later steps or later runs.</li>
+</ul>
+
+
+<h2 id="adapters">Adapters: How CPI Connects to Other Systems</h2>
+
+<p>
+    An adapter is a connector that understands one protocol or application. You choose it when you draw a
+    connection line from a sender to the start of the flow, or from a call step to a receiver.
+</p>
+
+<p>
+    Direction matters. A <strong>sender adapter</strong> opens an endpoint, or polls a source, so that a
+    message can enter your flow. A <strong>receiver adapter</strong> sends a message to a target. Some adapters work in both
+    directions and some in only one. For example, HTTPS is a sender adapter, while HTTP is a receiver adapter.
+</p>
+
+<div class="table-wrap">
+<table>
+    <thead>
+        <tr><th>Adapter</th><th>Direction</th><th>Typical use</th></tr>
+    </thead>
+    <tbody>
+        <tr><td><strong>HTTPS</strong></td><td>Sender</td><td>Expose an HTTPS endpoint so tools such as Postman, or other systems, can call your flow.</td></tr>
+        <tr><td><strong>HTTP</strong></td><td>Receiver</td><td>Call any REST or HTTP service.</td></tr>
+        <tr><td><strong>SOAP (SOAP 1.x)</strong></td><td>Sender and receiver</td><td>Web-service (SOAP) integrations.</td></tr>
+        <tr><td><strong>OData (V2 and V4)</strong></td><td>Sender and receiver</td><td>Expose or call OData services.</td></tr>
+        <tr><td><strong>IDoc</strong></td><td>Sender and receiver</td><td>Exchange IDocs with SAP ERP systems.</td></tr>
+        <tr><td><strong>RFC</strong></td><td>Receiver</td><td>Call function modules in SAP systems.</td></tr>
+        <tr><td><strong>SFTP</strong></td><td>Sender and receiver</td><td>Read and write files on SFTP servers.</td></tr>
+        <tr><td><strong>Mail</strong></td><td>Sender and receiver</td><td>Read emails (IMAP or POP3) or send emails (SMTP).</td></tr>
+        <tr><td><strong>JDBC</strong></td><td>Receiver</td><td>Read from and write to relational databases.</td></tr>
+        <tr><td><strong>JMS</strong></td><td>Sender and receiver</td><td>Asynchronous messaging with queues on the tenant.</td></tr>
+        <tr><td><strong>Kafka and AMQP</strong></td><td>Sender and receiver</td><td>Event streaming and messaging brokers.</td></tr>
+        <tr><td><strong>AS2 and AS4</strong></td><td>Sender and receiver</td><td>B2B document exchange with partners.</td></tr>
+        <tr><td><strong>XI</strong></td><td>Sender and receiver</td><td>Communicate with SAP PI / PO systems.</td></tr>
+        <tr><td><strong>ProcessDirect</strong></td><td>Sender and receiver</td><td>Call one integration flow from another on the same tenant.</td></tr>
+        <tr><td><strong>LDAP</strong></td><td>Receiver</td><td>Read from directory servers.</td></tr>
+        <tr><td><strong>SuccessFactors</strong></td><td>SOAP, REST, OData V2 and OData V4 variants</td><td>Connect to SAP SuccessFactors, for example in Employee Central integrations.</td></tr>
+        <tr><td><strong>Application adapters</strong></td><td>Varies</td><td>Open Connectors, Ariba, Salesforce, ServiceNow and others for specific applications.</td></tr>
+    </tbody>
+</table>
+</div>
+
+<p>
+    SAP adds and retires adapters over time, and the available versions depend on your tenant. Always check
+    the connectivity options in SAP Help for the current list.
+</p>
+
+<h3>How to choose an adapter</h3>
+<p>Ask three questions:</p>
+<ol>
+    <li>Which protocol or application does the other system speak?</li>
+    <li>Does the other system send to CPI (sender) or does CPI call it (receiver)?</li>
+    <li>How is the connection secured: basic authentication, OAuth or certificates?</li>
+</ol>
+<p>
+    Receiver adapters usually need credentials in <em>Security Material</em> and trusted certificates in the
+    <em>Keystore</em>. Keep that in mind when a call fails with a connection or certificate error.
+</p>
+
+<div class="info-box">
+    <strong>Consultant Tip for SuccessFactors</strong>
+    <p>
+        For Employee Central integrations you will mostly use the SuccessFactors adapters. Before you choose
+        between SOAP and OData, check SAP's current API guidance, because SAP recommends different APIs
+        for new work than for older integrations.
+    </p>
+</div>
+
+
+<h2 id="a-messages-journey">A Message's Journey Through CPI</h2>
+
+<ol>
+    <li>A system calls the endpoint created by the sender adapter.</li>
+    <li>CPI checks who is calling and whether that caller has the required role.</li>
+    <li>CPI creates a message with a body, headers and properties.</li>
+    <li>The message passes through the steps: modify, map, route, call, and so on.</li>
+    <li>A receiver adapter sends the result to the target system.</li>
+    <li>For synchronous calls, the answer travels back to the original sender.</li>
+    <li>CPI writes a message processing log, which you can open under Monitor.</li>
+</ol>
+
+
+<h2 id="interview-questions">Interview Questions</h2>
+
+<h3>1. What is the difference between SAP CPI and SAP Integration Suite?</h3>
+<p>
+    Cloud Integration (CPI) is one capability of SAP Integration Suite. The suite also contains capabilities such
+    as API Management, Open Connectors, Integration Advisor and Trading Partner Management.
+</p>
+
+<h3>2. What is the difference between a sender adapter and a receiver adapter?</h3>
+<p>
+    A sender adapter lets a message enter the flow, either by opening an endpoint or by polling a source.
+    A receiver adapter sends a message from the flow to a target system.
+</p>
+
+<h3>3. What is the difference between a header and a property?</h3>
+<p>
+    A header travels with the message and can be passed to the receiver by the adapter. A property exists only
+    while CPI processes the message and is never sent to the receiver.
+</p>
+
+<h3>4. Where do you check a failed message?</h3>
+<p>
+    Under Monitor, open Monitor Message Processing, filter for the failed message and open its processing log.
+    Raising the log level of the flow temporarily gives more detail.
+</p>
+
+
+<h2 id="faqs">Frequently Asked Questions</h2>
+
+<h3>Is SAP CPI the same as SAP PI / PO?</h3>
+<p>
+    No. SAP PI / PO is an on-premise integration platform. CPI is cloud-based and is delivered as part of SAP
+    Integration Suite. Many companies move scenarios from PI / PO to the cloud.
+</p>
+
+<h3>Do I need to know programming to learn CPI?</h3>
+<p>
+    Most of the work is graphical configuration. Basic Groovy scripting helps for advanced requirements, and
+    you can learn it later.
+</p>
+
+<h3>Can I practise for free?</h3>
+<p>
+    SAP offers a free trial on SAP BTP where you can enable Cloud Integration. Check SAP's current trial terms,
+    because they change from time to time.
+</p>
+
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>
+    You now have the map: SAP BTP hosts Integration Suite, Cloud Integration is one capability inside it, the
+    cockpit is split into Discover, Design, Monitor and Settings, and every flow is built from sender, steps and
+    receiver connected through adapters. The next articles use this map to explain why companies use CPI and then
+    build your first flow.
+</p>
+
+<div class="series-box"><strong>SAP CPI Beginner Series</strong><ol><li class="current"><span>1. SAP BTP and CPI basics: palette, adapters and the cockpit</span> (you are here)</li><li><a href="why-sap-cpi-is-used-use-cases-and-real-world-examples.html">2. Why SAP CPI is used: use cases and real-world examples</a></li><li><a href="first-cpi-integration-flow-sender-receiver-postman.html">3. Your first SAP CPI integration flow with Postman</a></li><li><a href="sap-cpi-encryption-decryption-pkcs7-postman.html">4. SAP CPI encryption and decryption with Postman</a></li></ol><p class="series-next">Next: <a href="why-sap-cpi-is-used-use-cases-and-real-world-examples.html">Why Is SAP CPI Used? Use Cases and Real-World Company Examples</a></p></div>
+
+
+            <div class="author-box">
+
+                <strong>
+                    SAPwithSAI
+                </strong>
+
+                <p>
+                    Practical SAP SuccessFactors Employee Central and
+                    SAP CPI learning for consultants.
+                </p>
+
+            </div>
+
+        </div>
+
+    </article>
+
+</main>
+
+<!-- Footer -->
+
+<footer>
+
+    <div class="footer-content">
+
+        <div>
+
+            <div class="logo">
+                SAPwith<span>SAI</span>
+            </div>
+
+            <p>
+                Learn SAP. Build your expertise.
+            </p>
+
+        </div>
+
+        <div>
+
+            <p>
+                © 2026 SAPwithSAI. All rights reserved.
+            </p>
+
+        </div>
+
+    </div>
+
+    <p class="footer-disclaimer">
+        SAPwithSAI is an independent learning site and is not affiliated with or
+        endorsed by SAP SE. SAP and SAP SuccessFactors are trademarks or
+        registered trademarks of SAP SE.
+    </p>
+
+</footer>
+
+<button
+    class="back-to-top"
+    id="back-to-top"
+    aria-label="Back to top">
+
+    ↑
+
+</button>
+
+<script>
+
+    const progressBar = document.getElementById("reading-progress");
+    const backToTop = document.getElementById("back-to-top");
+
+    window.addEventListener("scroll", function () {
+
+        const scrollTop = window.scrollY;
+        const documentHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = (scrollTop / documentHeight) * 100;
+
+        progressBar.style.width = progress + "%";
+
+        if (scrollTop > 500) {
+            backToTop.classList.add("show");
+        } else {
+            backToTop.classList.remove("show");
+        }
+
+    });
+
+    backToTop.addEventListener("click", function () {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+</script>
+
+<script>
+
+    const menuToggle = document.getElementById("menu-toggle");
+    const navLinks = document.querySelector(".nav-links");
+
+    if (menuToggle && navLinks) {
+
+        menuToggle.addEventListener("click", function () {
+            navLinks.classList.toggle("active");
+        });
+
+        navLinks.querySelectorAll("a").forEach(link => {
+            link.addEventListener("click", function () {
+                navLinks.classList.remove("active");
+            });
+        });
+
+    }
+
+</script>
+
+</body>
+
+</html>
