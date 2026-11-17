@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        SAP CPI Content Modifier: Headers, Properties and Body Explained (Using Postman) | SAPwithSAI
+    </title>
+    <meta name="description"
+          content="SAP CPI Content Modifier explained: message header, exchange property and body, source types, XPath and expressions, tested step by step with Postman.">
+    <meta name="author" content="SAPwithSAI">
+    <meta name="robots" content="index, follow">
+    <link
+    rel="canonical"
+    href="https://sapwithsai.github.io/articles/sap-cpi/content-modifier-headers-properties-body-postman.html"
+>
+<!-- Open Graph -->
+    <meta
+        property="og:title"
+        content="SAP CPI Content Modifier: Headers, Properties and Body Explained (Using Postman) | SAPwithSAI"
+    >
+    <meta
+        property="og:description"
+        content="SAP CPI Content Modifier explained: message header, exchange property and body, source types, XPath and expressions, tested step by step with Postman."
+    >
+    <meta
+        property="og:type"
+        content="article"
+    >
+    <meta
+        property="og:site_name"
+        content="SAPwithSAI"
+    >
+<meta
+    property="og:url"
+    content="https://sapwithsai.github.io/articles/sap-cpi/content-modifier-headers-properties-body-postman.html"
+>
+    <link rel="stylesheet" href="../../style.css">
+    <!-- Article Schema -->
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "SAP CPI Content Modifier: Headers, Properties and Body Explained (Using Postman)",
+    "description": "SAP CPI Content Modifier explained: message header, exchange property and body, source types, XPath and expressions, tested step by step with Postman.",
+    "author": {
+        "@type": "Organization",
+        "name": "SAPwithSAI"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "SAPwithSAI"
+    },
+    "datePublished": "2026-11-17",
+    "dateModified": "2026-11-17",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://sapwithsai.github.io/articles/sap-cpi/content-modifier-headers-properties-body-postman.html"
+    }
+}
+</script>
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+    <link rel="apple-touch-icon" href="/assets/favicon/apple-touch-icon.png">
+    <!-- Social sharing image -->
+    <meta property="og:image" content="https://sapwithsai.github.io/assets/images/sapwithsai-community.png">
+    <meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<div class="reading-progress" id="reading-progress"></div>
+
+<!-- Navigation -->
+
+<header>
+
+    <nav class="navbar">
+
+        <a class="logo" href="../../index.html" aria-label="SAPwithSAI home">SAPwith<span>SAI</span></a>
+
+        <button
+            class="menu-toggle"
+            id="menu-toggle"
+            aria-label="Open navigation">
+            ☰
+        </button>
+
+        <div class="nav-links">
+
+            <a href="../../index.html">
+                Home
+            </a>
+
+            <a href="../../blog.html">
+                Blog
+            </a>
+
+            <a href="../../employee-central.html">
+                Employee Central
+            </a>
+
+            <a href="../../cpi.html">
+                SAP CPI
+            </a>
+
+            <a href="../../interview-prep.html">
+                Interview Prep
+            </a>
+
+            <a href="../../about.html">
+                About
+            </a>
+
+        </div>
+
+    </nav>
+
+</header>
+
+<!-- Article -->
+
+<main>
+
+    <article class="blog-article">
+
+        <!-- Breadcrumb -->
+
+        <div class="breadcrumb">
+
+            <a href="../../index.html">
+                Home
+            </a>
+
+            <span> / </span>
+
+            <a href="../../cpi.html">
+                SAP CPI
+            </a>
+
+            <span> / </span>
+
+            <span>
+                Content Modifier Explained
+            </span>
+
+        </div>
+
+        <!-- Article Header -->
+
+        <header class="article-header">
+
+            <div class="article-category">
+                SAP CPI
+            </div>
+
+            <h1>
+                SAP CPI Content Modifier: Headers, Properties and Body Explained (Using Postman)
+            </h1>
+
+            <p class="article-intro">
+                Learn the three data containers in SAP CPI, build a Content Modifier flow step by step, and test it with Postman, including how to return JSON.
+            </p>
+
+            <div class="article-meta">
+
+                <span>
+                    By SAPwithSAI
+                </span>
+
+                <span>•</span>
+
+                <span>
+                    November 2026
+                </span>
+
+                <span>•</span>
+
+                <span>
+                    8 min read
+                </span>
+
+            </div>
+
+        </header>
+
+        <!-- Table of Contents -->
+
+        <div class="table-of-contents">
+
+            <h3>
+                In this article
+            </h3>
+
+            <ul>
+                <li><a href="#why-content-modifier">Why the Content Modifier Is the Step You Will Use Most</a></li><li><a href="#three-containers">The Three Data Containers</a></li><li><a href="#table-columns">The Columns of the Header and Property Tables</a></li><li><a href="#build-the-flow">Build the Practice Flow</a></li><li><a href="#test-with-postman">Test with Postman</a></li><li><a href="#json-response">Extend It: Return JSON with the Right Content-Type</a></li><li><a href="#header-or-property">Header or Property: How to Choose</a></li><li><a href="#common-mistakes">Common Mistakes</a></li><li><a href="#interview-questions">Interview Questions</a></li><li><a href="#faqs">Frequently Asked Questions</a></li><li><a href="#conclusion">Conclusion</a></li>
+            </ul>
+
+        </div>
+
+        <!-- Article Content -->
+
+        <div class="article-content">
+
+<h2 id="why-content-modifier">Why the Content Modifier Is the Step You Will Use Most</h2>
+
+<p>
+    If you open ten real integration flows, nine of them contain a <strong>Content Modifier</strong>. It is the
+    simplest and most-used step in SAP CPI. With it you can read a value out of the incoming message, store it for
+    later, add a fixed value, and rewrite the message that travels on to the next step.
+</p>
+
+<p>
+    To use it well you need to understand three places where CPI keeps data while a message is processed. In this
+    article you will learn them, and then see them working in a small flow that you test with Postman. It continues the
+    series, so you should already be able to build a flow with an HTTPS sender and call it from Postman
+    (see <a href="first-cpi-integration-flow-sender-receiver-postman.html">article 3</a>).
+</p>
+
+
+<h2 id="three-containers">The Three Data Containers</h2>
+
+<p>
+    SAP describes the Content Modifier as a step that changes one of three data containers during message processing:
+</p>
+
+<div class="table-wrap">
+<table>
+    <thead>
+        <tr><th>Container</th><th>What it is</th><th>Typical use</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>Message Header</strong></td>
+            <td>Key and value pairs that travel with the message. Headers describe the message, for example its content type.</td>
+            <td>Set <code>Content-Type</code>, keep an ID that the receiver should get, add routing information.</td>
+        </tr>
+        <tr>
+            <td><strong>Exchange Property</strong></td>
+            <td>Key and value pairs that live only inside CPI while the message is processed. The receiver never sees them.</td>
+            <td>Remember a value for later steps, store a timestamp, keep a copy of the original message.</td>
+        </tr>
+        <tr>
+            <td><strong>Message Body</strong></td>
+            <td>The payload itself: the business data being transferred.</td>
+            <td>Build a new message, a confirmation text or a JSON response.</td>
+        </tr>
+    </tbody>
+</table>
+</div>
+
+<figure class="diagram"><svg viewBox="0 0 800 270" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The Content Modifier writes to three containers: message header, exchange property and message body"><title>The Content Modifier writes to three containers: message header, exchange property and message body</title><defs><marker id="mCm" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#0070f3"/></marker></defs><rect x="10" y="100" width="120" height="64" rx="10" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/><text x="70.0" y="128.5" font-size="14" font-weight="700" fill="#172033" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">Postman</text><text x="70.0" y="145.5" font-size="12" font-weight="400" fill="#687282" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">sends the XML order</text><line x1="130" y1="132" x2="175" y2="132" stroke="#0070f3" stroke-width="2" marker-end="url(#mCm)"/><rect x="175" y="88" width="170" height="88" rx="10" fill="#f0f7ff" stroke="#0070f3" stroke-width="1.5"/><text x="260.0" y="111.5" font-size="14" font-weight="700" fill="#172033" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">Content Modifier</text><text x="260.0" y="128.5" font-size="12" font-weight="400" fill="#687282" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">reads values,</text><text x="260.0" y="145.5" font-size="12" font-weight="400" fill="#687282" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">saves them,</text><text x="260.0" y="162.5" font-size="12" font-weight="400" fill="#687282" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">rewrites the body</text><rect x="480" y="20" width="300" height="66" rx="10" fill="#eaf3ff" stroke="#0070f3" stroke-width="1.5"/><text x="630.0" y="41.0" font-size="14" font-weight="700" fill="#172033" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">Message Header</text><text x="630.0" y="58.0" font-size="12" font-weight="400" fill="#687282" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">OrderId, Source</text><text x="630.0" y="75.0" font-size="12" font-weight="400" fill="#687282" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">travels with the message</text><line x1="345" y1="132" x2="480" y2="53" stroke="#0070f3" stroke-width="2" marker-end="url(#mCm)"/><rect x="480" y="100" width="300" height="66" rx="10" fill="#fff7ed" stroke="#f59e0b" stroke-width="1.5"/><text x="630.0" y="121.0" font-size="14" font-weight="700" fill="#172033" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">Exchange Property</text><text x="630.0" y="138.0" font-size="12" font-weight="400" fill="#687282" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">CustomerName, ReceivedAt</text><text x="630.0" y="155.0" font-size="12" font-weight="400" fill="#687282" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">stays inside CPI</text><line x1="345" y1="132" x2="480" y2="133" stroke="#0070f3" stroke-width="2" marker-end="url(#mCm)"/><rect x="480" y="180" width="300" height="66" rx="10" fill="#f0fdf4" stroke="#22c55e" stroke-width="1.5"/><text x="630.0" y="201.0" font-size="14" font-weight="700" fill="#172033" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">Message Body</text><text x="630.0" y="218.0" font-size="12" font-weight="400" fill="#687282" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">the answer text or JSON</text><text x="630.0" y="235.0" font-size="12" font-weight="400" fill="#687282" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">the payload</text><line x1="345" y1="132" x2="480" y2="213" stroke="#0070f3" stroke-width="2" marker-end="url(#mCm)"/></svg><figcaption>Figure 1: The three data containers the Content Modifier can change.</figcaption></figure>
+
+<div class="info-box">
+    <strong>Simple way to remember</strong>
+    <p>
+        A <strong>header</strong> is like the label on an envelope: it travels with the letter.
+        A <strong>property</strong> is like a sticky note on your own desk: you can use it while you work,
+        but it never leaves your desk. The <strong>body</strong> is the letter itself.
+    </p>
+</div>
+
+
+<h2 id="table-columns">The Columns of the Header and Property Tables</h2>
+
+<p>
+    The <em>Message Header</em> and <em>Exchange Property</em> tabs both contain a table. Each row creates or deletes one entry:
+</p>
+
+<div class="table-wrap">
+<table>
+    <thead>
+        <tr><th>Column</th><th>Meaning</th></tr>
+    </thead>
+    <tbody>
+        <tr><td><strong>Action</strong></td><td><em>Create</em> adds or changes the entry. <em>Delete</em> removes it (you must give the name).</td></tr>
+        <tr><td><strong>Name</strong></td><td>The name of the header or property, for example <code>OrderId</code>.</td></tr>
+        <tr><td><strong>Source Type</strong></td><td>Where the value comes from (see the next table).</td></tr>
+        <tr><td><strong>Source Value</strong></td><td>The value itself, an expression, an XPath, or the name of another header or property, depending on the source type.</td></tr>
+        <tr><td><strong>Data Type</strong></td><td>Only used for the types <em>XPath</em> and <em>Expression</em>. A typical value is <code>java.lang.String</code>.</td></tr>
+    </tbody>
+</table>
+</div>
+
+<h3>Source types you will use first</h3>
+
+<div class="table-wrap">
+<table>
+    <thead>
+        <tr><th>Source Type</th><th>What it does</th><th>Example value</th></tr>
+    </thead>
+    <tbody>
+        <tr><td><strong>Constant</strong></td><td>Writes a fixed value.</td><td><code>Postman</code></td></tr>
+        <tr><td><strong>XPath</strong></td><td>Reads a value from the incoming <em>XML</em> message.</td><td><code>/Order/ID</code></td></tr>
+        <tr><td><strong>Expression</strong></td><td>Uses Camel Simple language to read headers, properties, the body or the date.</td><td><code>${date:now:yyyy-MM-dd HH:mm:ss}</code></td></tr>
+        <tr><td><strong>Header</strong></td><td>Copies the value of another header.</td><td>the header name</td></tr>
+        <tr><td><strong>Property</strong></td><td>Copies the value of an exchange property.</td><td>the property name</td></tr>
+    </tbody>
+</table>
+</div>
+
+<p>
+    Other types exist as well, for example variables and external parameters. Start with the five above.
+</p>
+
+<h3>Reading values later with expressions</h3>
+
+<pre><code>${header.OrderId}        value of the header OrderId
+${property.CustomerName} value of the exchange property CustomerName
+${in.body}               the current message body
+${date:now:yyyy-MM-dd}   today's date in the format you choose</code></pre>
+
+<p>
+    On the <em>Message Body</em> tab you choose between two types. <strong>Constant</strong> writes your text exactly as typed.
+    <strong>Expression</strong> evaluates the placeholders above. If the body field is left empty, the body is not changed.
+</p>
+
+
+<h2 id="build-the-flow">Build the Practice Flow</h2>
+
+<p>
+    The flow receives a small XML order from Postman. It copies two values into a header and a property, adds a constant
+    and a timestamp, and answers with a sentence that uses all of them.
+</p>
+
+<ol>
+    <li>In your package, add a new integration flow, for example <code>Content_Modifier_Demo</code>, and choose <strong>Edit</strong>.</li>
+    <li>Delete the Receiver. Draw a line from the Sender to the Start event and choose the <strong>HTTPS</strong> adapter.</li>
+    <li>Set <strong>Address</strong> to <code>/modify</code>, keep the user role <code>ESBMessaging.send</code> and untick <strong>CSRF Protected</strong> for this practice flow (as in article 3).</li>
+    <li>From <strong>Message Transformers</strong> drop a <strong>Content Modifier</strong> between Start and End.</li>
+</ol>
+
+<h3>Message Header tab</h3>
+
+<div class="table-wrap">
+<table>
+    <thead>
+        <tr><th>Action</th><th>Name</th><th>Source Type</th><th>Source Value</th><th>Data Type</th></tr>
+    </thead>
+    <tbody>
+        <tr><td>Create</td><td><code>OrderId</code></td><td>XPath</td><td><code>/Order/ID</code></td><td><code>java.lang.String</code></td></tr>
+        <tr><td>Create</td><td><code>Source</code></td><td>Constant</td><td><code>Postman</code></td><td></td></tr>
+    </tbody>
+</table>
+</div>
+
+<h3>Exchange Property tab</h3>
+
+<div class="table-wrap">
+<table>
+    <thead>
+        <tr><th>Action</th><th>Name</th><th>Source Type</th><th>Source Value</th><th>Data Type</th></tr>
+    </thead>
+    <tbody>
+        <tr><td>Create</td><td><code>CustomerName</code></td><td>XPath</td><td><code>/Order/Customer/Name</code></td><td><code>java.lang.String</code></td></tr>
+        <tr><td>Create</td><td><code>ReceivedAt</code></td><td>Expression</td><td><code>${date:now:yyyy-MM-dd HH:mm:ss}</code></td><td><code>java.lang.String</code></td></tr>
+    </tbody>
+</table>
+</div>
+
+<h3>Message Body tab</h3>
+
+<p>Choose the type <strong>Expression</strong> and enter:</p>
+
+<pre><code>Order ${header.OrderId} from ${property.CustomerName}
+Source: ${header.Source}
+Received at: ${property.ReceivedAt}</code></pre>
+
+<p>Save and deploy the flow, then copy its endpoint from <em>Manage Integration Content</em> as you did in article 3.</p>
+
+
+<h2 id="test-with-postman">Test with Postman</h2>
+
+<ol>
+    <li>Create a <strong>POST</strong> request to the endpoint (it ends with <code>/http/modify</code>) and use the same OAuth 2.0 setup as in article 3.</li>
+    <li>On the <strong>Body</strong> tab choose <strong>raw</strong> and select <strong>XML</strong> as the type. Enter made-up data:</li>
+</ol>
+
+<pre><code>&lt;Order&gt;
+    &lt;ID&gt;1001&lt;/ID&gt;
+    &lt;Customer&gt;
+        &lt;Name&gt;Asha&lt;/Name&gt;
+        &lt;Country&gt;IN&lt;/Country&gt;
+    &lt;/Customer&gt;
+&lt;/Order&gt;</code></pre>
+
+<ol start="3">
+    <li>Choose <strong>Send</strong>.</li>
+</ol>
+
+<p>The response should look like this (your time will differ):</p>
+
+<pre><code>Order 1001 from Asha
+Source: Postman
+Received at: 2026-11-17 09:30:00</code></pre>
+
+<p>
+    Every value in the answer came from a different place: the order ID from a header (read with XPath), the
+    customer name and the timestamp from properties, and <code>Postman</code> from a constant.
+</p>
+
+
+<h2 id="json-response">Extend It: Return JSON with the Right Content-Type</h2>
+
+<p>
+    Now make the answer more useful. Many callers expect JSON, and the <code>Content-Type</code> header tells them what
+    they receive. Add a <strong>second Content Modifier</strong> after the first one:
+</p>
+
+<p><strong>Message Header tab</strong></p>
+
+<div class="table-wrap">
+<table>
+    <thead>
+        <tr><th>Action</th><th>Name</th><th>Source Type</th><th>Source Value</th></tr>
+    </thead>
+    <tbody>
+        <tr><td>Create</td><td><code>Content-Type</code></td><td>Constant</td><td><code>application/json</code></td></tr>
+    </tbody>
+</table>
+</div>
+
+<p><strong>Message Body tab</strong> (type <em>Expression</em>)</p>
+
+<pre><code>{
+  "orderId": "${header.OrderId}",
+  "customer": "${property.CustomerName}",
+  "source": "${header.Source}"
+}</code></pre>
+
+<p>
+    Redeploy and send the same request. Postman should now show a JSON object. If it still shows plain text, check
+    that the header name <code>Content-Type</code> is spelled exactly and that the second Content Modifier sits after the first.
+</p>
+
+<div class="info-box">
+    <strong>Why two steps?</strong>
+    <p>
+        Steps run in the order you draw them. The first Content Modifier reads from the incoming XML. After it has
+        replaced the body, the XML is gone, which is why the values were saved in a header and a property first.
+        Plan your flow like this: <em>read first, save the values, then rewrite the body.</em>
+    </p>
+</div>
+
+
+<h2 id="header-or-property">Header or Property: How to Choose</h2>
+
+<div class="table-wrap">
+<table>
+    <thead>
+        <tr><th>Question</th><th>Use a header</th><th>Use a property</th></tr>
+    </thead>
+    <tbody>
+        <tr><td>Should the receiver or caller receive the value?</td><td>Yes, if the adapter allows it.</td><td>No. It stays inside CPI.</td></tr>
+        <tr><td>Is the value large?</td><td>Avoid. Headers have size limits.</td><td>Better, or keep it in the body.</td></tr>
+        <tr><td>Is it technical information for your own later steps?</td><td>Possible.</td><td>Best choice.</td></tr>
+        <tr><td>Is it a standard HTTP value such as <code>Content-Type</code>?</td><td>Yes.</td><td>No.</td></tr>
+    </tbody>
+</table>
+</div>
+
+
+<h2 id="common-mistakes">Common Mistakes</h2>
+
+<div class="table-wrap">
+<table>
+    <thead>
+        <tr><th>Problem</th><th>Usual cause</th><th>Fix</th></tr>
+    </thead>
+    <tbody>
+        <tr><td>The value is empty</td><td>The XPath does not match, the message is not XML, or the XML uses a namespace.</td><td>Compare the XPath with the real message, character by character. For namespaced XML, use the namespace-aware XPath.</td></tr>
+        <tr><td>The placeholder is printed as text</td><td>The body type is <em>Constant</em> instead of <em>Expression</em>.</td><td>Switch the Message Body type to Expression.</td></tr>
+        <tr><td>XPath step fails or returns the wrong type</td><td>The Data Type column is empty.</td><td>Enter <code>java.lang.String</code> for XPath and Expression entries.</td></tr>
+        <tr><td>Header or property is "not found"</td><td>A typo, or a different upper and lower case.</td><td>Names are case sensitive. Copy the exact name.</td></tr>
+        <tr><td>The original body is lost</td><td>A later Content Modifier replaced the body before you saved what you needed.</td><td>Save values or the whole <code>${in.body}</code> into a property first.</td></tr>
+        <tr><td>The body did not change</td><td>The body field was left empty.</td><td>An empty body field means "do not change". Enter your text or expression.</td></tr>
+    </tbody>
+</table>
+</div>
+
+
+<h2 id="interview-questions">Interview Questions</h2>
+
+<h3>1. What can the Content Modifier change?</h3>
+<p>
+    It can change three data containers: the message header, the exchange property and the message body. You can create or
+    delete headers and properties, and rewrite the body.
+</p>
+
+<h3>2. What is the difference between a header and a property?</h3>
+<p>
+    A header travels with the message and can be passed on to the receiver by the adapter. A property exists only during
+    processing inside CPI and is never sent to the receiver.
+</p>
+
+<h3>3. What is the difference between Constant and Expression?</h3>
+<p>
+    Constant writes the text exactly as entered. Expression evaluates placeholders such as <code>${header.name}</code>,
+    <code>${property.name}</code> and <code>${in.body}</code> using Camel Simple language.
+</p>
+
+<h3>4. When do you use XPath as the source type?</h3>
+<p>
+    When the incoming message is XML and you want to read one element or attribute from it, for example
+    <code>/Order/ID</code>. You also set a data type such as <code>java.lang.String</code>.
+</p>
+
+<h3>5. What happens if the body field of a Content Modifier is empty?</h3>
+<p>
+    The body is not changed. The incoming body is passed on as it is.
+</p>
+
+<h3>6. Why would you save <code>${in.body}</code> into a property?</h3>
+<p>
+    So that you can use the original message later, after another step has replaced the body, for example when you want
+    to log it, compare it, or send it in a different call.
+</p>
+
+
+<h2 id="faqs">Frequently Asked Questions</h2>
+
+<h3>Can the Content Modifier read JSON?</h3>
+<p>
+    The XPath type works on XML. For JSON, a common approach is to convert the message to XML first with a Converter step, or to
+    use a script. Start with XML while you learn.
+</p>
+
+<h3>Can I use more than one Content Modifier in a flow?</h3>
+<p>
+    Yes. Real flows often have several, each with a clear purpose, for example one to read values and one to build the
+    final message.
+</p>
+
+<h3>Do headers appear in the response to Postman?</h3>
+<p>
+    Some do, for example <code>Content-Type</code> is used to describe the response. Other headers may or may not be passed on,
+    depending on the adapter's settings. Do not rely on a header reaching a system unless you tested it.
+</p>
+
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>
+    The Content Modifier is small, but it teaches the most important idea in CPI: data lives in a header, a property or the body, and
+    your job is to move it to the right place at the right time. In the next articles you will use these values to route
+    messages, handle errors and map structures.
+</p>
+
+<div class="series-box"><strong>SAP CPI Beginner Series</strong><ol><li><a href="sap-btp-and-cpi-basics-palette-adapters-cockpit.html">1. SAP BTP and CPI basics: palette, adapters and the cockpit</a></li><li><a href="why-sap-cpi-is-used-use-cases-and-real-world-examples.html">2. Why SAP CPI is used: use cases and real-world examples</a></li><li><a href="first-cpi-integration-flow-sender-receiver-postman.html">3. Your first SAP CPI integration flow with Postman</a></li><li><a href="sap-cpi-encryption-decryption-pkcs7-postman.html">4. SAP CPI encryption and decryption with Postman</a></li><li class="current"><span>5. Content Modifier: headers, properties and body</span> (you are here)</li></ol><p class="series-next">Next: more SAP CPI articles are coming. Follow SAPwithSAI on Telegram to hear when they are published.</p></div>
+
+
+            <div class="author-box">
+
+                <strong>
+                    SAPwithSAI
+                </strong>
+
+                <p>
+                    Practical SAP SuccessFactors Employee Central and
+                    SAP CPI learning for consultants.
+                </p>
+
+            </div>
+
+        </div>
+
+    </article>
+
+</main>
+
+<!-- Footer -->
+
+<footer>
+
+    <div class="footer-content">
+
+        <div>
+
+            <div class="logo">
+                SAPwith<span>SAI</span>
+            </div>
+
+            <p>
+                Learn SAP. Build your expertise.
+            </p>
+
+        </div>
+
+        <div>
+
+            <p>
+                © 2026 SAPwithSAI. All rights reserved.
+            </p>
+
+        </div>
+
+    </div>
+
+    <p class="footer-disclaimer">
+        SAPwithSAI is an independent learning site and is not affiliated with or
+        endorsed by SAP SE. SAP and SAP SuccessFactors are trademarks or
+        registered trademarks of SAP SE.
+    </p>
+
+</footer>
+
+<button
+    class="back-to-top"
+    id="back-to-top"
+    aria-label="Back to top">
+
+    ↑
+
+</button>
+
+<script>
+
+    const progressBar = document.getElementById("reading-progress");
+    const backToTop = document.getElementById("back-to-top");
+
+    window.addEventListener("scroll", function () {
+
+        const scrollTop = window.scrollY;
+        const documentHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = (scrollTop / documentHeight) * 100;
+
+        progressBar.style.width = progress + "%";
+
+        if (scrollTop > 500) {
+            backToTop.classList.add("show");
+        } else {
+            backToTop.classList.remove("show");
+        }
+
+    });
+
+    backToTop.addEventListener("click", function () {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+</script>
+
+<script>
+
+    const menuToggle = document.getElementById("menu-toggle");
+    const navLinks = document.querySelector(".nav-links");
+
+    if (menuToggle && navLinks) {
+
+        menuToggle.addEventListener("click", function () {
+            navLinks.classList.toggle("active");
+        });
+
+        navLinks.querySelectorAll("a").forEach(link => {
+            link.addEventListener("click", function () {
+                navLinks.classList.remove("active");
+            });
+        });
+
+    }
+
+</script>
+
+</body>
+
+</html>

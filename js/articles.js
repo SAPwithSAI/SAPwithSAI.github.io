@@ -2,6 +2,45 @@ const articles = [
 
 
     {
+        title: "Import and Export Data in SAP SuccessFactors Employee Central: Full Purge vs Incremental Load",
+
+        category: "Employee Central",
+
+        description:
+            "Which import tool to use, how Full Purge and Incremental Load differ, and a safe routine for mass loads in Employee Central.",
+
+        url:
+            "articles/employee-central/import-and-export-data-full-purge-vs-incremental-load.html",
+
+        date: "November 2026",
+
+        readTime: "9 min read",
+
+        featured: false
+    },
+
+
+    {
+        title: "SAP CPI Content Modifier: Headers, Properties and Body Explained (Using Postman)",
+
+        category: "SAP CPI",
+
+        description:
+            "Learn headers, properties and body in SAP CPI, build a Content Modifier flow and test it with Postman.",
+
+        url:
+            "articles/sap-cpi/content-modifier-headers-properties-body-postman.html",
+
+        date: "November 2026",
+
+        readTime: "8 min read",
+
+        featured: false
+    },
+
+
+
+    {
         title: "SAP BTP and SAP CPI Basics: Palette, Adapters and Every Option in the Cockpit",
 
         category: "SAP CPI",

@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        Import and Export Data in SAP SuccessFactors Employee Central: Full Purge vs Incremental Load | SAPwithSAI
+    </title>
+    <meta name="description"
+          content="Employee Central import tools explained: Import and Export Data vs Import Employee Data, Full Purge vs Incremental Load, step by step and common errors.">
+    <meta name="author" content="SAPwithSAI">
+    <meta name="robots" content="index, follow">
+    <link
+    rel="canonical"
+    href="https://sapwithsai.github.io/articles/employee-central/import-and-export-data-full-purge-vs-incremental-load.html"
+>
+<!-- Open Graph -->
+    <meta
+        property="og:title"
+        content="Import and Export Data in SAP SuccessFactors Employee Central: Full Purge vs Incremental Load | SAPwithSAI"
+    >
+    <meta
+        property="og:description"
+        content="Employee Central import tools explained: Import and Export Data vs Import Employee Data, Full Purge vs Incremental Load, step by step and common errors."
+    >
+    <meta
+        property="og:type"
+        content="article"
+    >
+    <meta
+        property="og:site_name"
+        content="SAPwithSAI"
+    >
+<meta
+    property="og:url"
+    content="https://sapwithsai.github.io/articles/employee-central/import-and-export-data-full-purge-vs-incremental-load.html"
+>
+    <link rel="stylesheet" href="../../style.css">
+    <!-- Article Schema -->
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Import and Export Data in SAP SuccessFactors Employee Central: Full Purge vs Incremental Load",
+    "description": "Employee Central import tools explained: Import and Export Data vs Import Employee Data, Full Purge vs Incremental Load, step by step and common errors.",
+    "author": {
+        "@type": "Organization",
+        "name": "SAPwithSAI"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "SAPwithSAI"
+    },
+    "datePublished": "2026-11-17",
+    "dateModified": "2026-11-17",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://sapwithsai.github.io/articles/employee-central/import-and-export-data-full-purge-vs-incremental-load.html"
+    }
+}
+</script>
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+    <link rel="apple-touch-icon" href="/assets/favicon/apple-touch-icon.png">
+    <!-- Social sharing image -->
+    <meta property="og:image" content="https://sapwithsai.github.io/assets/images/sapwithsai-community.png">
+    <meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<div class="reading-progress" id="reading-progress"></div>
+
+<!-- Navigation -->
+
+<header>
+
+    <nav class="navbar">
+
+        <a class="logo" href="../../index.html" aria-label="SAPwithSAI home">SAPwith<span>SAI</span></a>
+
+        <button
+            class="menu-toggle"
+            id="menu-toggle"
+            aria-label="Open navigation">
+            ☰
+        </button>
+
+        <div class="nav-links">
+
+            <a href="../../index.html">
+                Home
+            </a>
+
+            <a href="../../blog.html">
+                Blog
+            </a>
+
+            <a href="../../employee-central.html">
+                Employee Central
+            </a>
+
+            <a href="../../cpi.html">
+                SAP CPI
+            </a>
+
+            <a href="../../interview-prep.html">
+                Interview Prep
+            </a>
+
+            <a href="../../about.html">
+                About
+            </a>
+
+        </div>
+
+    </nav>
+
+</header>
+
+<!-- Article -->
+
+<main>
+
+    <article class="blog-article">
+
+        <!-- Breadcrumb -->
+
+        <div class="breadcrumb">
+
+            <a href="../../index.html">
+                Home
+            </a>
+
+            <span> / </span>
+
+            <a href="../../employee-central.html">
+                Employee Central
+            </a>
+
+            <span> / </span>
+
+            <span>
+                Import and Export Data
+            </span>
+
+        </div>
+
+        <!-- Article Header -->
+
+        <header class="article-header">
+
+            <div class="article-category">
+                Employee Central
+            </div>
+
+            <h1>
+                Import and Export Data in SAP SuccessFactors Employee Central: Full Purge vs Incremental Load
+            </h1>
+
+            <p class="article-intro">
+                Learn which import tool to use in Employee Central, how Full Purge and Incremental Load differ, and a safe routine that protects your data during mass loads and corrections.
+            </p>
+
+            <div class="article-meta">
+
+                <span>
+                    By SAPwithSAI
+                </span>
+
+                <span>•</span>
+
+                <span>
+                    November 2026
+                </span>
+
+                <span>•</span>
+
+                <span>
+                    9 min read
+                </span>
+
+            </div>
+
+        </header>
+
+        <!-- Table of Contents -->
+
+        <div class="table-of-contents">
+
+            <h3>
+                In this article
+            </h3>
+
+            <ul>
+                <li><a href="#why-imports-matter">Why Import and Export Data Matters</a></li><li><a href="#import-tools">The Import Tools You Will Meet</a></li><li><a href="#purge-types">Full Purge vs Incremental Load</a></li><li><a href="#mdf-import-steps">Step by Step: Import and Export Data (MDF Objects)</a></li><li><a href="#employee-import-steps">Step by Step: Import Employee Data</a></li><li><a href="#safe-routine">A Safe Import Routine</a></li><li><a href="#common-errors">Common Errors and What to Do</a></li><li><a href="#real-world-scenarios">Typical Project Scenarios</a></li><li><a href="#interview-questions">Interview Questions</a></li><li><a href="#faqs">Frequently Asked Questions</a></li><li><a href="#conclusion">Conclusion</a></li>
+            </ul>
+
+        </div>
+
+        <!-- Article Content -->
+
+        <div class="article-content">
+
+<h2 id="why-imports-matter">Why Import and Export Data Matters</h2>
+
+<p>
+    Every Employee Central project loads data in bulk. The organisation structure is loaded at the start,
+    employee master data is migrated before go-live, and corrections arrive again and again during support.
+    Doing this record by record in the screen is slow and easy to get wrong.
+</p>
+
+<p>
+    SAP provides import tools that read a CSV file and create or change many records at once. They are powerful,
+    and that is exactly why they are risky. Choosing the wrong tool or the wrong <strong>purge type</strong> can
+    overwrite or delete data you wanted to keep. This article explains the tools, the two purge types and a safe
+    routine you can follow on every project.
+</p>
+
+
+<h2 id="import-tools">The Import Tools You Will Meet</h2>
+
+<p>
+    In Admin Center you search for the tool by name. Three tools matter for Employee Central:
+</p>
+
+<div class="table-wrap">
+<table>
+    <thead>
+        <tr><th>Tool</th><th>Used for</th><th>Good to know</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>Import Employee Data</strong></td>
+            <td>Employee-level data in Employee Central, such as personal information, address and job information.</td>
+            <td>You download a template for each data type. Effective dates must be correct. It has a Full Purge option.</td>
+        </tr>
+        <tr>
+            <td><strong>Import and Export Data</strong></td>
+            <td>Objects based on the Metadata Framework (MDF): generic objects, MDF-based foundation objects and your own custom objects.</td>
+            <td>Also lets you <em>download existing records</em>, which makes it useful for backups and mass corrections.</td>
+        </tr>
+        <tr>
+            <td><strong>Import Foundation Data</strong></td>
+            <td>The older, XML-based import for foundation objects.</td>
+            <td>SAP has been moving foundation entities to Import and Export Data (see the note below).</td>
+        </tr>
+    </tbody>
+</table>
+</div>
+
+<div class="info-box">
+    <strong>Check which tool your entity needs</strong>
+    <p>
+        SAP's knowledge base article 2080139 explains that, since the 1H 2022 release, Import and Export Data should be
+        used for several entities, including Job Classification Local, Job Family, Job Function, Pay Group, Cost Center,
+        Pay Calendar and Geo Zone. The matching background jobs are the "MDF Data Import" and "MDF Data Export" jobs
+        instead of "Foundation Data Import". Tool names and availability can change between releases, so check the
+        current SAP guidance for your tenant.
+    </p>
+</div>
+
+
+<h2 id="purge-types">Full Purge vs Incremental Load</h2>
+
+<p>
+    Both purge types import the file you give them. The difference is what happens to the records that are already in
+    the system but are <strong>not</strong> in your file.
+</p>
+
+<div class="table-wrap">
+<table>
+    <thead>
+        <tr><th></th><th>Incremental Load</th><th>Full Purge</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>In one sentence</strong></td>
+            <td>Adds and updates the records in your file and leaves the rest alone.</td>
+            <td>Replaces the existing records of the objects in your file with exactly what the file contains.</td>
+        </tr>
+        <tr>
+            <td><strong>MDF objects</strong></td>
+            <td>History of an object with the same external code is not cleaned out.</td>
+            <td>All records with the same external code as in the file are purged. Afterwards only the records from your file exist.</td>
+        </tr>
+        <tr>
+            <td><strong>Typical use</strong></td>
+            <td>Day-to-day changes, new records, small corrections.</td>
+            <td>First data migration, a complete reload, or removing wrong records on purpose.</td>
+        </tr>
+        <tr>
+            <td><strong>Risk</strong></td>
+            <td>Lower. Wrong old records can stay behind unnoticed.</td>
+            <td>High. Anything that is not in your file can be lost.</td>
+        </tr>
+        <tr>
+            <td><strong>Before you run it</strong></td>
+            <td>Validate the file.</td>
+            <td>Take a backup and make sure the file holds the <em>complete</em> history you want to keep.</td>
+        </tr>
+    </tbody>
+</table>
+</div>
+
+<figure class="diagram"><svg viewBox="0 0 800 340" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Example: an import file with one corrected 2022 record. Incremental Load keeps the other records, Full Purge removes them."><title>Example: an import file with one corrected 2022 record. Incremental Load keeps the other records, Full Purge removes them.</title><defs><marker id="mPur" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#0070f3"/></marker></defs><text x="10" y="48" font-size="14" font-weight="700" fill="#172033" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">In the system now</text><rect x="230" y="15" width="170" height="56" rx="10" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5"/><text x="315.0" y="39.5" font-size="13" font-weight="700" fill="#172033" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">2020</text><text x="315.0" y="56.5" font-size="12" font-weight="400" fill="#687282" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">Analyst</text><rect x="410" y="15" width="170" height="56" rx="10" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5"/><text x="495.0" y="39.5" font-size="13" font-weight="700" fill="#172033" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">2022</text><text x="495.0" y="56.5" font-size="12" font-weight="400" fill="#687282" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">Senior Analyst</text><rect x="590" y="15" width="170" height="56" rx="10" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5"/><text x="675.0" y="39.5" font-size="13" font-weight="700" fill="#172033" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">2025</text><text x="675.0" y="56.5" font-size="12" font-weight="400" fill="#687282" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">Manager</text><text x="10" y="128" font-size="14" font-weight="700" fill="#172033" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">Your import file</text><rect x="410" y="95" width="170" height="56" rx="10" fill="#eaf3ff" stroke="#0070f3" stroke-width="1.5"/><text x="495.0" y="119.5" font-size="13" font-weight="700" fill="#172033" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">2022</text><text x="495.0" y="136.5" font-size="12" font-weight="400" fill="#687282" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">Senior Analyst (corrected)</text><text x="10" y="218" font-size="14" font-weight="700" fill="#172033" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">After Incremental Load</text><rect x="230" y="185" width="170" height="56" rx="10" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5"/><text x="315.0" y="209.5" font-size="13" font-weight="700" fill="#172033" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">2020</text><text x="315.0" y="226.5" font-size="12" font-weight="400" fill="#687282" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">Analyst (kept)</text><rect x="410" y="185" width="170" height="56" rx="10" fill="#eaf3ff" stroke="#0070f3" stroke-width="1.5"/><text x="495.0" y="209.5" font-size="13" font-weight="700" fill="#172033" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">2022</text><text x="495.0" y="226.5" font-size="12" font-weight="400" fill="#687282" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">corrected (updated)</text><rect x="590" y="185" width="170" height="56" rx="10" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5"/><text x="675.0" y="209.5" font-size="13" font-weight="700" fill="#172033" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">2025</text><text x="675.0" y="226.5" font-size="12" font-weight="400" fill="#687282" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">Manager (kept)</text><text x="10" y="298" font-size="14" font-weight="700" fill="#172033" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">After Full Purge</text><rect x="230" y="265" width="170" height="56" rx="10" fill="#fff1f2" stroke="#f87171" stroke-width="1.5" stroke-dasharray="6 4"/><text x="315.0" y="289.5" font-size="13" font-weight="600" fill="#b91c1c" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">2020</text><text x="315.0" y="306.5" font-size="12" font-weight="400" fill="#b91c1c" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">removed</text><rect x="410" y="265" width="170" height="56" rx="10" fill="#eaf3ff" stroke="#0070f3" stroke-width="1.5"/><text x="495.0" y="289.5" font-size="13" font-weight="700" fill="#172033" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">2022</text><text x="495.0" y="306.5" font-size="12" font-weight="400" fill="#687282" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">corrected</text><rect x="590" y="265" width="170" height="56" rx="10" fill="#fff1f2" stroke="#f87171" stroke-width="1.5" stroke-dasharray="6 4"/><text x="675.0" y="289.5" font-size="13" font-weight="600" fill="#b91c1c" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">2025</text><text x="675.0" y="306.5" font-size="12" font-weight="400" fill="#b91c1c" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">removed</text></svg><figcaption>Figure 1: Same file, two purge types. Illustration with made-up job history.</figcaption></figure>
+
+<p>
+    Most objects in Employee Central are effective-dated, which means one object can have several time slices.
+    If effective dating is new to you, read our article on
+    <a href="effective-dating.html">Effective Dating in Employee Central</a> first. It explains why a missing time slice
+    in a Full Purge file simply disappears.
+</p>
+
+<div class="warning-box">
+    <strong>Rule of thumb</strong>
+    <p>
+        If you are not sure, choose <strong>Incremental Load</strong> and validate first. Use <strong>Full Purge</strong>
+        only when you can explain exactly which records should exist afterwards.
+    </p>
+</div>
+
+
+<h2 id="mdf-import-steps">Step by Step: Import and Export Data (MDF Objects)</h2>
+
+<ol>
+    <li>In Admin Center, search for <strong>Import and Export Data</strong>.</li>
+    <li>Under the action to perform, choose <strong>Download Template</strong> and select the object, for example a generic object. The template always matches the current object definition.</li>
+    <li>Open the CSV file and enter your data. Keep the header rows exactly as downloaded. For effective-dated objects, add one row per time slice.</li>
+    <li>Save the file as CSV with <strong>UTF-8</strong> encoding, so that special characters are kept.</li>
+    <li>Go back to the page and choose the action <strong>Import Data</strong>. Select your file and the <strong>File Encoding</strong> (Unicode UTF-8 supports most languages).</li>
+    <li>Choose the <strong>Purge Type</strong>: Incremental Load or Full Purge. Optionally you can suppress redundant date-effective records, which removes repeated entries and improves performance.</li>
+    <li>Choose <strong>Validate</strong> first. Fix every error in the file, and only then choose <strong>Import</strong>.</li>
+    <li>Check the job result. Failed steps appear in the job details, and the import result file lists the detailed error message for each row.</li>
+    <li>Verify a few records in the system, for example with <strong>Manage Data</strong>, or export the object again and compare.</li>
+</ol>
+
+<p>
+    The same tool can <strong>export</strong> existing records. Exporting the objects you are about to change gives you
+    an easy backup before every import.
+</p>
+
+
+<h2 id="employee-import-steps">Step by Step: Import Employee Data</h2>
+
+<ol>
+    <li>In Admin Center, search for <strong>Import Employee Data</strong>.</li>
+    <li>Choose the data type, for example <strong>Address</strong>, and download its template.</li>
+    <li>Fill in the template. Check the effective dates carefully: records of the same employee must not overlap, and the format of every date must match the template.</li>
+    <li>If you are correcting existing data, first back up the current records, for example with an ad hoc report, and prepare the corrected rows from it. Copy and paste is faster when the report columns match the template.</li>
+    <li>Upload the file. Tick the <strong>Full Purge</strong> option only when you want to replace the complete history of that data type for the employees in the file.</li>
+    <li>Run the import, review the result and error messages, and check a few employees on their profile.</li>
+</ol>
+
+<div class="info-box">
+    <strong>Loading order matters</strong>
+    <p>
+        Employee data builds on other data. Users and the person and employment records must exist before the data that
+        depends on them, and organisation objects such as departments must exist before employees can reference them.
+        Always follow the loading sequence in SAP's data migration guidance for your scenario.
+    </p>
+</div>
+
+
+<h2 id="safe-routine">A Safe Import Routine</h2>
+
+<ol>
+    <li><strong>Back up first.</strong> Export the affected records or run an ad hoc report and keep the file.</li>
+    <li><strong>Download a fresh template.</strong> After any data model or object definition change, old templates are out of date.</li>
+    <li><strong>Test in a non-production system</strong> before you touch production.</li>
+    <li><strong>Start small.</strong> Import five records and check them before you load thousands.</li>
+    <li><strong>Validate before you import.</strong> Fix errors in the file, not in the system.</li>
+    <li><strong>Choose the purge type deliberately</strong> and say it out loud: "after this import, which records exist?"</li>
+    <li><strong>Read the result file</strong> even when the job shows success.</li>
+    <li><strong>Verify and document.</strong> Check records in the screen and keep the file, date and purpose of every import.</li>
+</ol>
+
+
+<h2 id="common-errors">Common Errors and What to Do</h2>
+
+<div class="table-wrap">
+<table>
+    <thead>
+        <tr><th>Problem</th><th>Usual cause</th><th>What to do</th></tr>
+    </thead>
+    <tbody>
+        <tr><td>Columns do not match the system</td><td>The data model or object definition changed after you downloaded the template.</td><td>Download a fresh template and copy your data into it.</td></tr>
+        <tr><td>Reference or code not found</td><td>The parent object, picklist value or external code does not exist, or is spelled differently.</td><td>Load the parent objects first and compare the external codes character by character.</td></tr>
+        <tr><td>Date errors</td><td>Wrong date format, overlapping effective dates, or an end date before a start date.</td><td>Use the format from the template and check that time slices of one record follow each other.</td></tr>
+        <tr><td>Mandatory field missing</td><td>The configuration requires a field that the file leaves empty.</td><td>Fill every required column. Check the configuration if the requirement is unexpected.</td></tr>
+        <tr><td>Special characters look wrong</td><td>The file was not saved as UTF-8.</td><td>Save as CSV UTF-8 and select the same encoding during the import.</td></tr>
+        <tr><td>You are not allowed to import</td><td>Your permission role does not include the tool or the object.</td><td>Ask your administrator to check the role-based permissions.</td></tr>
+        <tr><td>Records disappeared after the import</td><td>Full Purge was used and the file did not contain every record.</td><td>Restore from your backup file with a new import, and review the purge type for next time.</td></tr>
+    </tbody>
+</table>
+</div>
+
+
+<h2 id="real-world-scenarios">Typical Project Scenarios</h2>
+
+<p>These are common patterns on projects, not statements about specific companies.</p>
+
+<ul>
+    <li><strong>First load of the organisation structure.</strong> Locations, legal entities, business units and departments are loaded as MDF objects, parents before children, usually with Full Purge on an empty system.</li>
+    <li><strong>Mass correction of descriptions.</strong> Export the objects, correct the text in the CSV, and import with Incremental Load so that history stays untouched.</li>
+    <li><strong>Cleaning up wrong address history.</strong> Back up the employee's records, prepare the complete corrected set of rows, and run a Full Purge for that data type only for the affected employees.</li>
+    <li><strong>New cost centres from finance.</strong> Finance sends a list. You add the rows to a fresh template and load them incrementally.</li>
+</ul>
+
+
+<h2 id="interview-questions">Interview Questions</h2>
+
+<h3>1. What is the difference between Full Purge and Incremental Load?</h3>
+<p>
+    Incremental Load adds and updates the records in the file and leaves other existing records alone. Full Purge replaces
+    the existing records of the objects in the file with exactly the records from the file, so anything not in the file is
+    removed.
+</p>
+
+<h3>2. Which tool imports MDF-based objects?</h3>
+<p>
+    Import and Export Data in Admin Center. You download a template, fill it, validate it and import it. The same tool can
+    also export existing records.
+</p>
+
+<h3>3. What do you do before running a Full Purge?</h3>
+<p>
+    Take a backup of the current records, make sure the file contains the complete history you want to keep, test in a
+    non-production system and validate the file.
+</p>
+
+<h3>4. Why must parent objects be loaded before child objects?</h3>
+<p>
+    Child records reference their parents, for example a department references a business unit. If the parent does not exist,
+    the reference cannot be resolved and the row fails.
+</p>
+
+<h3>5. Where do you see the reason for a failed row?</h3>
+<p>
+    In the job details of the import, and in the import result file, which lists the error message for each failed row.
+</p>
+
+<h3>6. Why do you download a fresh template for every import?</h3>
+<p>
+    The template is generated from the current object definition or data model. After a configuration change, an old
+    template can have missing or extra columns.
+</p>
+
+
+<h2 id="faqs">Frequently Asked Questions</h2>
+
+<h3>Is Incremental Load always safe?</h3>
+<p>
+    It is safer than Full Purge, but not risk-free. A wrong value in the file will still overwrite the correct value, and
+    wrong old records may stay behind. Always validate and verify.
+</p>
+
+<h3>Can I use the import tools to delete data?</h3>
+<p>
+    Full Purge can remove records that are not in the file, and some objects support removal in other ways. Treat every
+    deletion as permanent and take a backup first.
+</p>
+
+<h3>Do I need an administrator role to use these tools?</h3>
+<p>
+    You need the right permissions in your role-based permission setup for the tool and for the objects you load. If a tool is
+    missing, ask your administrator.
+</p>
+
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>
+    The import tools save hours, and the purge type decides whether they also save your data. Remember the three habits:
+    back up before you change, validate before you import, and choose Full Purge only when you can say exactly which
+    records should exist afterwards. With those habits, mass loading becomes one of the safest and most useful skills in
+    your Employee Central toolbox.
+</p>
+
+
+            <div class="author-box">
+
+                <strong>
+                    SAPwithSAI
+                </strong>
+
+                <p>
+                    Practical SAP SuccessFactors Employee Central and
+                    SAP CPI learning for consultants.
+                </p>
+
+            </div>
+
+        </div>
+
+    </article>
+
+</main>
+
+<!-- Footer -->
+
+<footer>
+
+    <div class="footer-content">
+
+        <div>
+
+            <div class="logo">
+                SAPwith<span>SAI</span>
+            </div>
+
+            <p>
+                Learn SAP. Build your expertise.
+            </p>
+
+        </div>
+
+        <div>
+
+            <p>
+                © 2026 SAPwithSAI. All rights reserved.
+            </p>
+
+        </div>
+
+    </div>
+
+    <p class="footer-disclaimer">
+        SAPwithSAI is an independent learning site and is not affiliated with or
+        endorsed by SAP SE. SAP and SAP SuccessFactors are trademarks or
+        registered trademarks of SAP SE.
+    </p>
+
+</footer>
+
+<button
+    class="back-to-top"
+    id="back-to-top"
+    aria-label="Back to top">
+
+    ↑
+
+</button>
+
+<script>
+
+    const progressBar = document.getElementById("reading-progress");
+    const backToTop = document.getElementById("back-to-top");
+
+    window.addEventListener("scroll", function () {
+
+        const scrollTop = window.scrollY;
+        const documentHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = (scrollTop / documentHeight) * 100;
+
+        progressBar.style.width = progress + "%";
+
+        if (scrollTop > 500) {
+            backToTop.classList.add("show");
+        } else {
+            backToTop.classList.remove("show");
+        }
+
+    });
+
+    backToTop.addEventListener("click", function () {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+</script>
+
+<script>
+
+    const menuToggle = document.getElementById("menu-toggle");
+    const navLinks = document.querySelector(".nav-links");
+
+    if (menuToggle && navLinks) {
+
+        menuToggle.addEventListener("click", function () {
+            navLinks.classList.toggle("active");
+        });
+
+        navLinks.querySelectorAll("a").forEach(link => {
+            link.addEventListener("click", function () {
+                navLinks.classList.remove("active");
+            });
+        });
+
+    }
+
+</script>
+
+</body>
+
+</html>
